@@ -8,6 +8,7 @@ import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.DecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import supercoder79.vanillaplusbiomes.BiomeRegistry;
@@ -39,6 +40,7 @@ public class TaigaBiomes {
         Biome taiga_lake = template.builder()
                 .depth(-0.3F)
                 .scale(0)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.SEAGRASS, new SeagrassFeatureConfig(48, 0.4D), Decorator.TOP_SOLID_HEIGHTMAP, DecoratorConfig.DEFAULT))
                 .addDefaultFeature(TAIGA_TREES)
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.TAIGA, BiomeRegistry.register("taiga_lake", taiga_lake), 2F);
@@ -50,8 +52,12 @@ public class TaigaBiomes {
         OverworldBiomes.addHillsBiome(Biomes.TAIGA, BiomeRegistry.register("taiga_clearing", taiga_clearing), 2F);
         Biome berry_fields = template.builder()
                 .addTreeFeature(Feature.PINE_TREE, 8)
-                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.SWEET_BERRY_BUSH, FeatureConfig.DEFAULT, Decorator.COUNT_HEIGHTMAP_DOUBLE, new CountDecoratorConfig(24)))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.SWEET_BERRY_BUSH, FeatureConfig.DEFAULT, Decorator.COUNT_HEIGHTMAP_DOUBLE, new CountDecoratorConfig(32)))
                 .build();
-        OverworldBiomes.addHillsBiome(Biomes.TAIGA, BiomeRegistry.register("berry_fields", berry_fields), 6F);
+        OverworldBiomes.addHillsBiome(Biomes.TAIGA, BiomeRegistry.register("berry_fields", berry_fields), 0.5F);
+        Biome taiga_edge = template.builder()
+                .addTreeFeature(Feature.PINE_TREE, 6)
+                .build();
+        OverworldBiomes.addEdgeBiome(Biomes.TAIGA, BiomeRegistry.register("taiga_edge", taiga_edge), 1F);
     }
 }
