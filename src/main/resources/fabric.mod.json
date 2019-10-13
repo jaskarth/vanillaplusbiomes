@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "vanillaplusbiomes",
+  "version": "0.1.0",
+
+  "name": "Vanilla Plus Biomes",
+  "description": "Adds new varieties of existing vanilla biomes",
+  "authors": [
+    "SuperCoder79"
+  ],
+  "contact": {
+    "homepage": "The best way to contact me is to DM me on discord: SuperCoder79#3673",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+  "icon": "",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "supercoder79.vanillaplusbiomes.VanillaPlusBiomes"
+    ]
+  },
+  "mixins": [
+    "vanillaplusbiomes.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  }
+}
