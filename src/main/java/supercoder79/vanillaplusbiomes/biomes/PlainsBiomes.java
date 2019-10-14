@@ -43,5 +43,10 @@ public class PlainsBiomes {
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.FANCY_TREE, FeatureConfig.DEFAULT, Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(1, 0.75f, 1)))
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.PLAINS, BiomeRegistry.register("sparse_forest", sparse_forest), 1.F);
+        Biome flower_field = template.builder()
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.FOREST_FLOWER, FeatureConfig.DEFAULT, Decorator.COUNT_HEIGHTMAP_32, new CountDecoratorConfig(150)))
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.PLAINS, BiomeRegistry.register("flower_field", flower_field), 0.1f);
+
     }
 }
