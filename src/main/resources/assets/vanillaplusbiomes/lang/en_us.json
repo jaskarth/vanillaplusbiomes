@@ -1,8 +1,13 @@
 {
   "biome.vanillaplusbiomes.sparse_forest": "Sparse Forest",
   "biome.vanillaplusbiomes.pumpkin_patch": "Pumpkin Patch",
+  "biome.vanillaplusbiomes.flower_field": "Flower Field",
   "biome.vanillaplusbiomes.berry_fields": "Berry Fields",
   "biome.vanillaplusbiomes.taiga_lake": "Taiga Lake",
   "biome.vanillaplusbiomes.taiga_clearing": "Taiga Clearing",
-  "biome.vanillaplusbiomes.taiga_edge": "Taiga Edge"
+  "biome.vanillaplusbiomes.taiga_edge": "Taiga Edge",
+  "biome.vanillaplusbiomes.swamp_clearing": "Swamp Clearing",
+  "biome.vanillaplusbiomes.swamp_edge": "Swamp Edge",
+  "biome.vanillaplusbiomes.mushroomy_swamp": "Mushroomy Swamp",
+  "biome.vanillaplusbiomes.lush_swamp": "Lush Swamp"
 }
