@@ -42,7 +42,13 @@ public class OceanBiomes {
                 .depth(-0.4f)
                 .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.COLD, 0.6F, 0.9F))
                 .build();
-        OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("ocean_lagoon", ocean_lagoon), 0.25);
+        OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("ocean_lagoon", ocean_lagoon), 0.05);
+        Biome cold_ocean_lagoon = template.builder()
+                .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRAVEL_CONFIG)
+                .depth(-0.5f)
+                .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.COLD, 0.5F, 0.9F))
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("cold_ocean_lagoon", cold_ocean_lagoon), 0.05);
         Biome lukewarm_ocean_lagoon = template.builder()
                 .depth(-0.4f)
                 .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.WARM, 0.8F, 0.9F))
@@ -50,7 +56,7 @@ public class OceanBiomes {
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.PUFFERFISH, 5, 1, 3))
                 .addDefaultFeature(MORE_SEAGRASS)
                 .build();
-        OverworldBiomes.addBiomeVariant(Biomes.LUKEWARM_OCEAN, BiomeRegistry.register("lukewarm_ocean_lagoon", lukewarm_ocean_lagoon), 0.25);
+        OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("lukewarm_ocean_lagoon", lukewarm_ocean_lagoon), 0.05);
         Biome warm_ocean_lagoon = template.builder()
                 .depth(-0.4f)
                 .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.WARM, 1.0F, 0.9F))
@@ -60,12 +66,6 @@ public class OceanBiomes {
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfig(new Feature[]{Feature.CORAL_TREE, Feature.CORAL_CLAW, Feature.CORAL_MUSHROOM}, new FeatureConfig[]{FeatureConfig.DEFAULT, FeatureConfig.DEFAULT, FeatureConfig.DEFAULT}), Decorator.TOP_SOLID_HEIGHTMAP_NOISE_BIASED, new TopSolidHeightmapNoiseBiasedDecoratorConfig(20, 400.0D, 0.0D, Heightmap.Type.OCEAN_FLOOR_WG)))
                 .addDefaultFeature(MORE_SEAGRASS)
                 .build();
-        OverworldBiomes.addBiomeVariant(Biomes.WARM_OCEAN, BiomeRegistry.register("warm_ocean_lagoon", warm_ocean_lagoon), 0.25);
-        Biome cold_ocean_lagoon = template.builder()
-                .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRAVEL_CONFIG)
-                .depth(-0.5f)
-                .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.COLD, 0.5F, 0.9F))
-                .build();
-        OverworldBiomes.addBiomeVariant(Biomes.COLD_OCEAN, BiomeRegistry.register("cold_ocean_lagoon", cold_ocean_lagoon), 0.25);
+        OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("warm_ocean_lagoon", warm_ocean_lagoon), 0.05);
     }
 }
