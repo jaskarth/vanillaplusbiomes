@@ -26,11 +26,10 @@ public class DesertBiomes {
             .downfall(0.0F)
             .waterColor(4159204)
             .waterFogColor(329011)
-            .addStructureFeature(Feature.VILLAGE, new VillageFeatureConfig("village/desert/town_centers", 6))
             .addStructureFeature(Feature.PILLAGER_OUTPOST, new PillagerOutpostFeatureConfig(0.004D))
             .addStructureFeature(Feature.STRONGHOLD)
             .addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
-            .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
+            .addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, MINEABLES, ORES, DISKS,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, DEFAULT_GRASS, DESERT_VEGETATION, FOSSILS, SPRINGS)
             .addDefaultSpawnEntries()
             .addSpawnEntry(new Biome.SpawnEntry(EntityType.HUSK, 80, 4, 4))
@@ -38,6 +37,7 @@ public class DesertBiomes {
     public static void generate() {
         Biome red_desert = template.builder()
                 .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, new TernarySurfaceConfig(Blocks.RED_SAND.getDefaultState(), Blocks.RED_SAND.getDefaultState(), Blocks.GRAVEL.getDefaultState()))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.CACTUS, FeatureConfig.DEFAULT, Decorator.COUNT_HEIGHTMAP_DOUBLE, new CountDecoratorConfig(10)))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.DESERT, BiomeRegistry.register("red_desert", red_desert), 0.1);
         Biome oasis = template.builder()
@@ -50,9 +50,26 @@ public class DesertBiomes {
                 .scale(0)
                 .temperature(1)
                 .downfall(1)
+                .waterColor(4445678)
+                .waterFogColor(270131)
+                .addStructureFeature(Feature.VILLAGE, new VillageFeatureConfig("village/desert/town_centers", 18))
                 .build();
         oasis = BiomeRegistry.register("oasis", oasis);
         OverworldBiomes.addHillsBiome(Biomes.DESERT, oasis, 0.1F);
-        OverworldBiomes.addHillsBiome(red_desert, oasis, 0.1F);
+        OverworldBiomes.addHillsBiome(red_desert, oasis, 0.05F);
+
+        Biome lush_desert = template.builder()
+                .depth(0.075F)
+                .addStructureFeature(Feature.VILLAGE, new VillageFeatureConfig("village/desert/town_centers", 12))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.CACTUS, FeatureConfig.DEFAULT, Decorator.COUNT_HEIGHTMAP_32, new CountDecoratorConfig(100)))
+                .addDefaultFeature(LAKES)
+                .build();
+        OverworldBiomes.addHillsBiome(Biomes.DESERT, BiomeRegistry.register("lush_desert", lush_desert), 1.F);
+
+        Biome barren_desert = template.builder()
+                .depth(0.2F)
+                .scale(0.1F)
+                .build();
+        OverworldBiomes.addHillsBiome(Biomes.DESERT, BiomeRegistry.register("barren_desert", barren_desert), 2.F);
     }
 }
