@@ -9,5 +9,13 @@
   "biome.vanillaplusbiomes.swamp_clearing": "Swamp Clearing",
   "biome.vanillaplusbiomes.swamp_edge": "Swamp Edge",
   "biome.vanillaplusbiomes.mushroomy_swamp": "Mushroomy Swamp",
-  "biome.vanillaplusbiomes.lush_swamp": "Lush Swamp"
+  "biome.vanillaplusbiomes.lush_swamp": "Lush Swamp",
+  "biome.vanillaplusbiomes.ocean_lagoon": "Lagoon",
+  "biome.vanillaplusbiomes.cold_ocean_lagoon": "Cold Lagoon",
+  "biome.vanillaplusbiomes.lukewarm_ocean_lagoon": "Lukewarm Lagoon",
+  "biome.vanillaplusbiomes.warm_ocean_lagoon": "Warm Lagoon",
+  "biome.vanillaplusbiomes.red_desert": "Red Desert",
+  "biome.vanillaplusbiomes.oasis": "Oasis",
+  "biome.vanillaplusbiomes.lush_desert": "Lush Desert",
+  "biome.vanillaplusbiomes.barren_desert": "Barren Desert"
 }
