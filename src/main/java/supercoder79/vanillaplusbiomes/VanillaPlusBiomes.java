@@ -1,10 +1,7 @@
 package supercoder79.vanillaplusbiomes;
 
 import net.fabricmc.api.ModInitializer;
-import supercoder79.vanillaplusbiomes.biomes.OceanBiomes;
-import supercoder79.vanillaplusbiomes.biomes.PlainsBiomes;
-import supercoder79.vanillaplusbiomes.biomes.SwampBiomes;
-import supercoder79.vanillaplusbiomes.biomes.TaigaBiomes;
+import supercoder79.vanillaplusbiomes.biomes.*;
 
 public class VanillaPlusBiomes implements ModInitializer {
 	@Override
@@ -15,5 +12,6 @@ public class VanillaPlusBiomes implements ModInitializer {
 		PlainsBiomes.register();
 		OceanBiomes.register();
 		SwampBiomes.register();
+        DesertBiomes.generate();
 	}
 }

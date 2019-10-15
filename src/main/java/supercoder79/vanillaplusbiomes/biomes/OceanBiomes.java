@@ -46,11 +46,15 @@ public class OceanBiomes {
         Biome cold_ocean_lagoon = template.builder()
                 .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRAVEL_CONFIG)
                 .depth(-0.5f)
+                .waterColor(4020182)
+                .waterFogColor(329011)
                 .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.COLD, 0.5F, 0.9F))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("cold_ocean_lagoon", cold_ocean_lagoon), 0.05);
         Biome lukewarm_ocean_lagoon = template.builder()
                 .depth(-0.4f)
+                .waterColor(4566514)
+                .waterFogColor(267827)
                 .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.WARM, 0.8F, 0.9F))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.TROPICAL_FISH, 25, 8, 8))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.PUFFERFISH, 5, 1, 3))
@@ -59,6 +63,8 @@ public class OceanBiomes {
         OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("lukewarm_ocean_lagoon", lukewarm_ocean_lagoon), 0.05);
         Biome warm_ocean_lagoon = template.builder()
                 .depth(-0.4f)
+                .waterColor(4445678)
+                .waterFogColor(270131)
                 .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.WARM, 1.0F, 0.9F))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.TROPICAL_FISH, 25, 8, 8))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.PUFFERFISH, 5, 1, 3))
