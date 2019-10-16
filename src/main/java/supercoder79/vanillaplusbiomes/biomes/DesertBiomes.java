@@ -34,7 +34,7 @@ public class DesertBiomes {
             .addDefaultSpawnEntries()
             .addSpawnEntry(new Biome.SpawnEntry(EntityType.HUSK, 80, 4, 4))
     );
-    public static void generate() {
+    public static void register() {
         Biome red_desert = template.builder()
                 .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, new TernarySurfaceConfig(Blocks.RED_SAND.getDefaultState(), Blocks.RED_SAND.getDefaultState(), Blocks.GRAVEL.getDefaultState()))
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.CACTUS, FeatureConfig.DEFAULT, Decorator.COUNT_HEIGHTMAP_DOUBLE, new CountDecoratorConfig(10)))
