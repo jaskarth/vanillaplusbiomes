@@ -9,6 +9,7 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.DecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import supercoder79.vanillaplusbiomes.BiomeRegistry;
@@ -41,12 +42,19 @@ public class PlainsBiomes {
         OverworldBiomes.addHillsBiome(Biomes.PLAINS, BiomeRegistry.register("pumpkin_patch", pumpkin_patch), 0.3F);
         Biome sparse_forest = template.builder()
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.FANCY_TREE, FeatureConfig.DEFAULT, Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(1, 0.75f, 1)))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.NORMAL_TREE, FeatureConfig.DEFAULT, Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(2, 0.5f, 3)))
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.PLAINS, BiomeRegistry.register("sparse_forest", sparse_forest), 1.F);
         Biome flower_field = template.builder()
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.FOREST_FLOWER, FeatureConfig.DEFAULT, Decorator.COUNT_HEIGHTMAP_32, new CountDecoratorConfig(150)))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.PLAINS, BiomeRegistry.register("flower_field", flower_field), 0.1f);
-
+        Biome lowlands = template.builder()
+                .depth(-0.25f)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.SEAGRASS, new SeagrassFeatureConfig(64, 0.4D), Decorator.TOP_SOLID_HEIGHTMAP, DecoratorConfig.DEFAULT))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.NORMAL_TREE, FeatureConfig.DEFAULT, Decorator.COUNT_EXTRA_HEIGHTMAP, new CountExtraChanceDecoratorConfig(1, 0.5f, 3)))
+                .scale(0.125f)
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.PLAINS, BiomeRegistry.register("lowlands", lowlands), 0.1f);
     }
 }

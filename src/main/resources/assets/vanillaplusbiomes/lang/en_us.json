@@ -2,6 +2,7 @@
   "biome.vanillaplusbiomes.sparse_forest": "Sparse Forest",
   "biome.vanillaplusbiomes.pumpkin_patch": "Pumpkin Patch",
   "biome.vanillaplusbiomes.flower_field": "Flower Field",
+  "biome.vanillaplusbiomes.lowlands": "Lowlands",
   "biome.vanillaplusbiomes.berry_fields": "Berry Fields",
   "biome.vanillaplusbiomes.taiga_lake": "Taiga Lake",
   "biome.vanillaplusbiomes.taiga_clearing": "Taiga Clearing",
@@ -17,5 +18,9 @@
   "biome.vanillaplusbiomes.red_desert": "Red Desert",
   "biome.vanillaplusbiomes.oasis": "Oasis",
   "biome.vanillaplusbiomes.lush_desert": "Lush Desert",
-  "biome.vanillaplusbiomes.barren_desert": "Barren Desert"
+  "biome.vanillaplusbiomes.barren_desert": "Barren Desert",
+  "biome.vanillaplusbiomes.forest_edge": "Forest Edge",
+  "biome.vanillaplusbiomes.forest_clearing": "Forest Clearing",
+  "biome.vanillaplusbiomes.forest_lake": "Forest Lake",
+  "biome.vanillaplusbiomes.forest_thicket": "Forest Thicket"
 }
