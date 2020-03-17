@@ -14,5 +14,7 @@ public class VanillaPlusBiomes implements ModInitializer {
 		SwampBiomes.register();
         DesertBiomes.register();
         ForestBiomes.register();
+        BirchForestBiomes.register();
+        DarkForestBiomes.register();
 	}
 }

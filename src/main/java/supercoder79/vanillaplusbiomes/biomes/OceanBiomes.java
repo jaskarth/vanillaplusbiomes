@@ -1,5 +1,7 @@
 package supercoder79.vanillaplusbiomes.biomes;
 
+import com.google.common.collect.ImmutableList;
+import com.terraformersmc.terraform.biome.builder.DefaultFeature;
 import com.terraformersmc.terraform.biome.builder.TerraformBiome;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.minecraft.entity.EntityType;
@@ -68,8 +70,17 @@ public class OceanBiomes {
                 .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.WARM, 1.0F, 0.9F))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.TROPICAL_FISH, 25, 8, 8))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.PUFFERFISH, 5, 1, 3))
-                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.SEA_PICKLE, new SeaPickleFeatureConfig(20), Decorator.CHANCE_TOP_SOLID_HEIGHTMAP, new ChanceDecoratorConfig(16)))
-                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.SIMPLE_RANDOM_SELECTOR, new SimpleRandomFeatureConfig(new Feature[]{Feature.CORAL_TREE, Feature.CORAL_CLAW, Feature.CORAL_MUSHROOM}, new FeatureConfig[]{FeatureConfig.DEFAULT, FeatureConfig.DEFAULT, FeatureConfig.DEFAULT}), Decorator.TOP_SOLID_HEIGHTMAP_NOISE_BIASED, new TopSolidHeightmapNoiseBiasedDecoratorConfig(20, 400.0D, 0.0D, Heightmap.Type.OCEAN_FLOOR_WG)))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.SEA_PICKLE.configure(new SeaPickleFeatureConfig(20)).createDecoratedFeature(Decorator.CHANCE_TOP_SOLID_HEIGHTMAP.configure(new ChanceDecoratorConfig(16))))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                        Feature.SIMPLE_RANDOM_SELECTOR.configure(
+                                new SimpleRandomFeatureConfig(
+                                        ImmutableList.of(
+                                                Feature.CORAL_TREE.configure(FeatureConfig.DEFAULT),
+                                                Feature.CORAL_CLAW.configure(FeatureConfig.DEFAULT),
+                                                Feature.CORAL_MUSHROOM.configure(FeatureConfig.DEFAULT))))
+                                .createDecoratedFeature(
+                                        Decorator.TOP_SOLID_HEIGHTMAP_NOISE_BIASED.configure(
+                                                new TopSolidHeightmapNoiseBiasedDecoratorConfig(20, 400.0D, 0.0D, Heightmap.Type.OCEAN_FLOOR_WG))))
                 .addDefaultFeature(MORE_SEAGRASS)
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("warm_ocean_lagoon", warm_ocean_lagoon), 0.05);
