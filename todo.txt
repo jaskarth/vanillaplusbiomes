@@ -1,0 +1,6 @@
+Biomes:
+* Snowy variants of taiga
+* Ice plains variants
+
+Features:
+* Thick fallen logs for dark oak forests

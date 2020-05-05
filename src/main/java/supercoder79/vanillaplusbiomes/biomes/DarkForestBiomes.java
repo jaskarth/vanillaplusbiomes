@@ -34,8 +34,8 @@ public class DarkForestBiomes {
     );
     public static void register() {
         Biome dark_forest_edge = template.builder()
-                .addTreeFeature(Feature.DARK_OAK_TREE.configure(DefaultBiomeFeatures.DARK_OAK_TREE_CONFIG), 2)
-                .addTreeFeature(Feature.NORMAL_TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG), 1)
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.DARK_OAK_TREE_CONFIG), 2)
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG), 1)
                 .build();
         OverworldBiomes.addEdgeBiome(Biomes.DARK_FOREST, BiomeRegistry.register("dark_forest_edge", dark_forest_edge), 0.2F);
     }

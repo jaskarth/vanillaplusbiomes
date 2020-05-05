@@ -25,7 +25,7 @@ public class PlainsBiomes {
             .downfall(0.4F)
             .waterColor(4159204)
             .waterFogColor(329011)
-            .addStructureFeature(Feature.VILLAGE, new VillageFeatureConfig("village/plains/town_centers", 6))
+            .addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/plains/town_centers", 6))
             .addStructureFeature(Feature.PILLAGER_OUTPOST, FeatureConfig.DEFAULT)
             .addStructureFeature(Feature.STRONGHOLD)
             .addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
@@ -41,8 +41,8 @@ public class PlainsBiomes {
         OverworldBiomes.addHillsBiome(Biomes.PLAINS, BiomeRegistry.register("pumpkin_patch", pumpkin_patch), 0.3F);
 
         Biome sparse_forest = template.builder()
-                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.FANCY_TREE.configure(DefaultBiomeFeatures.FANCY_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.5f, 1))))
-                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.NORMAL_TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.5f, 1))))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.5f, 1))))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.5f, 1))))
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.PLAINS, BiomeRegistry.register("sparse_forest", sparse_forest), 1.F);
 
@@ -54,7 +54,7 @@ public class PlainsBiomes {
         Biome lowlands = template.builder()
                 .depth(-0.25f)
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.SEAGRASS.configure(new SeagrassFeatureConfig(64, 0.4D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)))
-                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.NORMAL_TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(1, 0.5f, 3))))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(1, 0.5f, 3))))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.COD, 10, 6, 12))
                 .scale(0.125f)
                 .build();

@@ -44,8 +44,8 @@ public class DesertBiomes {
         Biome oasis = template.builder()
                 .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.GRASS_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(2))))
-                .addTreeFeature(Feature.NORMAL_TREE.configure(DefaultBiomeFeatures.JUNGLE_TREE_CONFIG), 3)
-                .addTreeFeature(Feature.JUNGLE_GROUND_BUSH.configure(DefaultBiomeFeatures.JUNGLE_TREE_CONFIG), 1)
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.JUNGLE_TREE_CONFIG), 3)
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.JUNGLE_TREE_CONFIG), 1)
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.SUGAR_CANE_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(200))))
                 .depth(-0.25f)
                 .scale(0)
@@ -53,7 +53,7 @@ public class DesertBiomes {
                 .downfall(1)
                 .waterColor(4445678)
                 .waterFogColor(270131)
-                .addStructureFeature(Feature.VILLAGE, new VillageFeatureConfig("village/desert/town_centers", 18))
+                .addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/desert/town_centers", 18))
                 .build();
 
         oasis = BiomeRegistry.register("oasis", oasis);
@@ -62,7 +62,7 @@ public class DesertBiomes {
 
         Biome lush_desert = template.builder()
                 .depth(0.075F)
-                .addStructureFeature(Feature.VILLAGE, new VillageFeatureConfig("village/desert/town_centers", 12))
+                .addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/desert/town_centers", 12))
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.CACTUS_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(100))))
                 .addDefaultFeature(LAKES)
                 .build();
