@@ -59,5 +59,11 @@ public class PlainsBiomes {
                 .scale(0.125f)
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.PLAINS, BiomeRegistry.register("lowlands", lowlands), 0.1f);
+
+        Biome plains_hills = template.builder()
+                .depth(0.35f)
+                .scale(0.4f)
+                .build();
+        OverworldBiomes.addHillsBiome(Biomes.PLAINS, BiomeRegistry.register("plains_hills", plains_hills), 0.2F);
     }
 }
