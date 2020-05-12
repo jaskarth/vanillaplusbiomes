@@ -70,9 +70,15 @@ public class TaigaBiomes {
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.TAIGA, BiomeRegistry.register("berry_fields", berry_fields), 0.5F);
         Biome taiga_edge = template.builder()
-                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.PINE_TREE_CONFIG), 3)
-                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.SPRUCE_TREE_CONFIG), 3)
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.PINE_TREE_CONFIG), 1)
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.SPRUCE_TREE_CONFIG), 1)
                 .build();
         OverworldBiomes.addEdgeBiome(Biomes.TAIGA, BiomeRegistry.register("taiga_edge", taiga_edge), 1F);
+
+        Biome pine_taiga = template.builder()
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.PINE_TREE_CONFIG), 7)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.SWEET_BERRY_BUSH_CONFIG).createDecoratedFeature(Decorator.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceDecoratorConfig(1))))
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.TAIGA, BiomeRegistry.register("pine_taiga", pine_taiga), 0.1F);
     }
 }

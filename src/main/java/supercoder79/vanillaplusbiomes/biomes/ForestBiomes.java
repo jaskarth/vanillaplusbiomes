@@ -8,14 +8,13 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountDecoratorConfig;
-import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.DecoratorConfig;
+import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
+import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import supercoder79.vanillaplusbiomes.BiomeRegistry;
 import supercoder79.vanillaplusbiomes.misc.FallenTrunkPlacer;
 import supercoder79.vanillaplusbiomes.misc.NoneFoliagePlacer;
@@ -23,6 +22,16 @@ import supercoder79.vanillaplusbiomes.misc.NoneFoliagePlacer;
 import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
 
 public class ForestBiomes {
+    private static final TreeFeatureConfig TALL_OAK_TREE = new TreeFeatureConfig.Builder(
+            new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
+            new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
+            new BlobFoliagePlacer(2, 0, 0, 0, 3),
+            new StraightTrunkPlacer(5, 2, 6),
+            new TwoLayersFeatureSize(1, 0, 1))
+                .method_27374()
+                .method_27376(ImmutableList.of(new BeehiveTreeDecorator(0.002F))).build();
+
+
     public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
             .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
             .precipitation(Biome.Precipitation.RAIN)
@@ -94,5 +103,19 @@ public class ForestBiomes {
                                 .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(5, 0.1F, 1))))
                 .build();
         OverworldBiomes.addEdgeBiome(Biomes.FOREST, BiomeRegistry.register("forest_edge", forest_edge), 0.5F);
+
+        Biome tall_forest = template.builder()
+                .depth(0.1F)
+                .scale(0.3F)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                        Feature.RANDOM_SELECTOR.configure(
+                                new RandomFeatureConfig(
+                                        ImmutableList.of(
+                                                Feature.TREE.configure(DefaultBiomeFeatures.LARGE_BIRCH_TREE_CONFIG).withChance(0.2F),
+                                                Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_WITH_RARE_BEEHIVES_CONFIG).withChance(0.1F)),
+                                        Feature.TREE.configure(TALL_OAK_TREE)))
+                                .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("tall_forest", tall_forest), 0.1F);
     }
 }
