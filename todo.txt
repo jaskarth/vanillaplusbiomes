@@ -1,6 +1,11 @@
 Biomes:
-* Snowy variants of taiga
-* Ice plains variants
+* Everglades biome?
+* Dried forest
+* Desert Plateau
+* Mixed forest
+* Fen (dead taiga)
+* Make birch forest less boring
+* Tall dark forest (make the light generator weep)
 
 Features:
 * Thick fallen logs for dark oak forests

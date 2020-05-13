@@ -34,7 +34,7 @@ public class TaigaBiomes {
             .waterColor(4159204)
             .waterFogColor(329011)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
-                    DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, TAIGA_GRASS, DEFAULT_VEGETATION, SPRINGS, SWEET_BERRY_BUSHES)
+                    DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, TAIGA_GRASS, DEFAULT_VEGETATION, SPRINGS, SWEET_BERRY_BUSHES, FROZEN_TOP_LAYER)
             .addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/taiga/town_centers", 6))
             .addStructureFeature(Feature.PILLAGER_OUTPOST, FeatureConfig.DEFAULT)
             .addStructureFeature(Feature.STRONGHOLD)

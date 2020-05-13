@@ -1,5 +1,6 @@
 package supercoder79.vanillaplusbiomes.biomes;
 
+import com.google.common.collect.ImmutableList;
 import com.terraformersmc.terraform.biome.builder.TerraformBiome;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.minecraft.block.Blocks;
@@ -10,7 +11,11 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
+import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
+import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import supercoder79.vanillaplusbiomes.BiomeRegistry;
 
 import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
@@ -45,6 +50,7 @@ public class PlainsBiomes {
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.5f, 1))))
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.PLAINS, BiomeRegistry.register("sparse_forest", sparse_forest), 1.F);
+        OverworldBiomes.addBiomeVariant(Biomes.PLAINS, sparse_forest, 0.05f);
 
         Biome flower_field = template.builder()
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.FLOWER.configure(DefaultBiomeFeatures.FOREST_FLOWER_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_32.configure(new CountDecoratorConfig(150))))
@@ -54,7 +60,13 @@ public class PlainsBiomes {
         Biome lowlands = template.builder()
                 .depth(-0.25f)
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.SEAGRASS.configure(new SeagrassFeatureConfig(64, 0.4D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)))
-                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(1, 0.5f, 3))))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.TREE.configure(new TreeFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
+                        new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
+                        new BlobFoliagePlacer(2, 0, 0, 0, 3),
+                        new StraightTrunkPlacer(6, 2, 0),
+                        new TwoLayersFeatureSize(1, 0, 1)).method_27374().baseHeight(2).build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                        .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(1, 0.5f, 3))))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.COD, 10, 6, 12))
                 .scale(0.125f)
                 .build();
