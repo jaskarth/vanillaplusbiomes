@@ -77,5 +77,19 @@ public class PlainsBiomes {
                 .scale(0.4f)
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.PLAINS, BiomeRegistry.register("plains_hills", plains_hills), 0.2F);
+
+        //this is literally just traverse's biome but less cool
+        Biome plains_plateau = template.builder()
+                .depth(1.5F)
+                .scale(0.025f)
+                .build();
+        OverworldBiomes.addHillsBiome(Biomes.PLAINS, BiomeRegistry.register("plains_plateau", plains_plateau), 0.2F);
+
+        Biome rocky_plains = template.builder()
+                .depth(0.2f)
+                .addCustomFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, Feature.FOREST_ROCK.configure(new BoulderFeatureConfig(Blocks.COBBLESTONE.getDefaultState(), 0)).createDecoratedFeature(Decorator.FOREST_ROCK.configure(new CountDecoratorConfig(3))))
+                .scale(0.2f)
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.PLAINS, BiomeRegistry.register("rocky_plains", rocky_plains), 0.1f);
     }
 }

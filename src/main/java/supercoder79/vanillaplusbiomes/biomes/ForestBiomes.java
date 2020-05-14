@@ -11,8 +11,7 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
-import net.minecraft.world.gen.foliage.BushFoliagePlacer;
+import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
@@ -137,7 +136,7 @@ public class ForestBiomes {
                                         Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_WITH_RARE_BEEHIVES_CONFIG)))
                                 .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
                 .build();
-        OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("forest_scrub", forest_scrub), 0.05F);
+        OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("forest_scrub", forest_scrub), 0.1F);
 
         Biome flooded_forest = template.builder()
                 .depth(-0.1F)
@@ -169,5 +168,87 @@ public class ForestBiomes {
                                 .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("flooded_forest", flooded_forest), 0.1F);
+
+        Biome flat_tree_forest = template.builder()
+                .depth(0.1F)
+                .scale(0.3F)
+                .addTreeFeature(Feature.TREE.configure(new TreeFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
+                        new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
+                        new BushFoliagePlacer(2, 0, 1, 0, 2),
+                        new FallenTrunkPlacer(1, 0, 0),
+                        new TwoLayersFeatureSize(0, 0, 0)).build()), 2)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                        Feature.RANDOM_SELECTOR.configure(
+                                new RandomFeatureConfig(
+                                        ImmutableList.of(
+                                                Feature.TREE.configure(new TreeFeatureConfig.Builder(
+                                                        new SimpleBlockStateProvider(Blocks.BIRCH_LOG.getDefaultState()),
+                                                        new SimpleBlockStateProvider(Blocks.BIRCH_LEAVES.getDefaultState()),
+                                                        new AcaciaFoliagePlacer(2, 0, 0, 0),
+                                                        new StraightTrunkPlacer(5, 2, 0),
+                                                        new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                                                        .withChance(0.2F),
+                                                Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_WITH_RARE_BEEHIVES_CONFIG).withChance(0.025F)),
+                                        Feature.TREE.configure(new TreeFeatureConfig.Builder(
+                                                new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
+                                                new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
+                                                new AcaciaFoliagePlacer(2, 0, 0, 0),
+                                                new StraightTrunkPlacer(4, 2, 0),
+                                                new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))))
+                                .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("flat_tree_forest", flat_tree_forest), 0.1F);
+
+        Biome balloon_forest = template.builder()
+                .depth(0.2F)
+                .scale(0.3F)
+                .addTreeFeature(Feature.TREE.configure(new TreeFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
+                        new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
+                        new BushFoliagePlacer(2, 0, 1, 0, 2),
+                        new FallenTrunkPlacer(1, 0, 0),
+                        new TwoLayersFeatureSize(0, 0, 0)).build()), 2)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                        Feature.RANDOM_SELECTOR.configure(
+                                new RandomFeatureConfig(
+                                        ImmutableList.of(
+                                                Feature.TREE.configure(new TreeFeatureConfig.Builder(
+                                                        new SimpleBlockStateProvider(Blocks.BIRCH_LOG.getDefaultState()),
+                                                        new SimpleBlockStateProvider(Blocks.BIRCH_LEAVES.getDefaultState()),
+                                                        new LargeOakFoliagePlacer(2, 0, 0, 0, 4),
+                                                        new StraightTrunkPlacer(5, 2, 0),
+                                                        new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                                                        .withChance(0.2F),
+                                                Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_WITH_RARE_BEEHIVES_CONFIG).withChance(0.025F)),
+                                        Feature.TREE.configure(new TreeFeatureConfig.Builder(
+                                                new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
+                                                new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
+                                                new LargeOakFoliagePlacer(2, 0, 0, 0, 4),
+                                                new StraightTrunkPlacer(4, 2, 0),
+                                                new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))))
+                                .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("balloon_forest", balloon_forest), 0.1F);
+
+        Biome tall_tree_forest = template.builder()
+                .depth(0.2F)
+                .scale(0.3F)
+                .addTreeFeature(Feature.TREE.configure(new TreeFeatureConfig.Builder(
+                        new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
+                        new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
+                        new BushFoliagePlacer(2, 0, 1, 0, 2),
+                        new FallenTrunkPlacer(1, 0, 0),
+                        new TwoLayersFeatureSize(0, 0, 0)).build()), 2)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                                        Feature.TREE.configure(new TreeFeatureConfig.Builder(
+                                                new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
+                                                new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
+                                                new SpruceFoliagePlacer(1, 0, 0, 2, 1, 1),
+                                                new StraightTrunkPlacer(6, 3, 3),
+                                                new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                                .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("tall_tree_forest", tall_tree_forest), 0.05F);
     }
 }

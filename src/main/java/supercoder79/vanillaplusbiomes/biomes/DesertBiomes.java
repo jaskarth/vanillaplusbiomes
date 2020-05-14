@@ -64,6 +64,7 @@ public class DesertBiomes {
                 .depth(0.075F)
                 .addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/desert/town_centers", 12))
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.CACTUS_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(100))))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.DEAD_BUSH_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(5))))
                 .addDefaultFeature(LAKES)
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.DESERT, BiomeRegistry.register("lush_desert", lush_desert), 1.F);
@@ -73,5 +74,22 @@ public class DesertBiomes {
                 .scale(0.1F)
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.DESERT, BiomeRegistry.register("barren_desert", barren_desert), 2.F);
+
+        Biome desert_plateau = template.builder()
+                .depth(1.5F)
+                .scale(0.025F)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.CACTUS_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(10))))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.DEAD_BUSH_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(2))))
+                .build();
+        OverworldBiomes.addHillsBiome(Biomes.DESERT, BiomeRegistry.register("desert_plateau", desert_plateau), 1.F);
+
+        Biome red_desert_plateau = template.builder()
+                .depth(1.5F)
+                .scale(0.025F)
+                .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, new TernarySurfaceConfig(Blocks.RED_SAND.getDefaultState(), Blocks.RED_SAND.getDefaultState(), Blocks.GRAVEL.getDefaultState()))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.CACTUS_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(10))))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.DEAD_BUSH_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(2))))
+                .build();
+        OverworldBiomes.addHillsBiome(red_desert, BiomeRegistry.register("red_desert_plateau", red_desert_plateau), 1.F);
     }
 }
