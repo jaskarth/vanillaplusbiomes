@@ -13,8 +13,11 @@ import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.DecoratorConfig;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
+import net.minecraft.world.gen.foliage.PineFoliagePlacer;
+import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import supercoder79.vanillaplusbiomes.BiomeRegistry;
 import supercoder79.vanillaplusbiomes.misc.FallenTrunkPlacer;
 import supercoder79.vanillaplusbiomes.misc.NoneFoliagePlacer;
@@ -32,7 +35,8 @@ public class SnowyTaigaBiomes {
             .waterColor(4159204)
             .waterFogColor(329011)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
-                    DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, TAIGA_GRASS, DEFAULT_VEGETATION, SPRINGS, SWEET_BERRY_BUSHES)
+                    DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, TAIGA_GRASS, DEFAULT_VEGETATION, SPRINGS, SWEET_BERRY_BUSHES,
+                    FROZEN_TOP_LAYER)
             .addStructureFeature(Feature.PILLAGER_OUTPOST, FeatureConfig.DEFAULT)
             .addStructureFeature(Feature.STRONGHOLD)
             .addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
@@ -41,13 +45,13 @@ public class SnowyTaigaBiomes {
             .addSpawnEntry(new Biome.SpawnEntry(EntityType.FOX, 8, 2, 4))
     );
     public static void register() {
-        Biome taiga_lake = template.builder()
+        Biome snowy_taiga_lake = template.builder()
                 .depth(-0.3F)
                 .scale(0)
                 .addDefaultFeature(TAIGA_TREES)
                 .build();
-        OverworldBiomes.addHillsBiome(Biomes.SNOWY_TAIGA, BiomeRegistry.register("snowy_taiga_lake", taiga_lake), 2F);
-        Biome taiga_clearing = template.builder()
+        OverworldBiomes.addHillsBiome(Biomes.SNOWY_TAIGA, BiomeRegistry.register("snowy_taiga_lake", snowy_taiga_lake), 2F);
+        Biome snowy_taiga_clearing = template.builder()
                 .scale(0.1F)
                 .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.PINE_TREE_CONFIG), 2)
                 .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.SPRUCE_TREE_CONFIG), 1)
@@ -58,17 +62,49 @@ public class SnowyTaigaBiomes {
                         new FallenTrunkPlacer(5, 4, 0),
                         new TwoLayersFeatureSize(0, 0, 0)).build()), 1)
                 .build();
-        OverworldBiomes.addHillsBiome(Biomes.SNOWY_TAIGA, BiomeRegistry.register("snowy_taiga_clearing", taiga_clearing), 2F);
-        Biome berry_fields = template.builder()
+        OverworldBiomes.addHillsBiome(Biomes.SNOWY_TAIGA, BiomeRegistry.register("snowy_taiga_clearing", snowy_taiga_clearing), 2F);
+        Biome snowy_berry_fields = template.builder()
                 .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.PINE_TREE_CONFIG), 3)
                 .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.SPRUCE_TREE_CONFIG), 3)
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.SWEET_BERRY_BUSH_CONFIG).createDecoratedFeature(Decorator.CHANCE_HEIGHTMAP_DOUBLE.configure(new ChanceDecoratorConfig(40))))
                 .build();
-        OverworldBiomes.addHillsBiome(Biomes.SNOWY_TAIGA, BiomeRegistry.register("snowy_berry_fields", berry_fields), 0.5F);
-        Biome taiga_edge = template.builder()
-                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.PINE_TREE_CONFIG), 3)
-                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.SPRUCE_TREE_CONFIG), 3)
+        OverworldBiomes.addHillsBiome(Biomes.SNOWY_TAIGA, BiomeRegistry.register("snowy_berry_fields", snowy_berry_fields), 0.5F);
+        Biome snowy_taiga_edge = template.builder()
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.PINE_TREE_CONFIG), 1)
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.SPRUCE_TREE_CONFIG), 1)
                 .build();
-        OverworldBiomes.addEdgeBiome(Biomes.SNOWY_TAIGA, BiomeRegistry.register("snowy_taiga_edge", taiga_edge), 1F);
+        OverworldBiomes.addEdgeBiome(Biomes.SNOWY_TAIGA, BiomeRegistry.register("snowy_taiga_edge", snowy_taiga_edge), 1F);
+
+        Biome snowy_pine_taiga = template.builder()
+                .addDefaultFeatures(SWEET_BERRY_BUSHES_SNOWY)
+                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.PINE_TREE_CONFIG), 7)
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.TAIGA, BiomeRegistry.register("snowy_pine_taiga", snowy_pine_taiga), 0.1F);
+
+        Biome tall_snowy_taiga = template.builder()
+                .depth(0.1F)
+                .scale(0.05F)
+                .addDefaultFeatures(SWEET_BERRY_BUSHES_SNOWY)
+                .addTreeFeature(Feature.TREE.configure(
+                        new TreeFeatureConfig.Builder(
+                                new SimpleBlockStateProvider(Blocks.SPRUCE_LOG.getDefaultState()),
+                                new SimpleBlockStateProvider(Blocks.SPRUCE_LEAVES.getDefaultState()),
+                                new SpruceFoliagePlacer(2, 1, 0, 3, 1, 1),
+                                new StraightTrunkPlacer(10, 4, 4),
+                                new TwoLayersFeatureSize(2, 0, 2)).method_27374().build()), 6)
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.SNOWY_TAIGA, BiomeRegistry.register("tall_snowy_taiga", tall_snowy_taiga), 0.1F);
+
+        Biome tall_snowy_pine_taiga = template.builder()
+                .addDefaultFeatures(SWEET_BERRY_BUSHES_SNOWY)
+                .addTreeFeature(Feature.TREE.configure(
+                        new TreeFeatureConfig.Builder(
+                                new SimpleBlockStateProvider(Blocks.SPRUCE_LOG.getDefaultState()),
+                                new SimpleBlockStateProvider(Blocks.SPRUCE_LEAVES.getDefaultState()),
+                                new PineFoliagePlacer(1, 0, 1, 0, 3, 1),
+                                new StraightTrunkPlacer(10, 4, 4),
+                                new TwoLayersFeatureSize(2, 0, 2)).method_27374().build()), 9)
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.SNOWY_TAIGA, BiomeRegistry.register("tall_snowy_pine_taiga", tall_snowy_pine_taiga), 0.1F);
     }
 }
