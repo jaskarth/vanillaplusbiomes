@@ -21,6 +21,7 @@ import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 import supercoder79.vanillaplusbiomes.BiomeRegistry;
+import supercoder79.vanillaplusbiomes.trunk.AncientTrunkPlacer;
 
 import java.util.OptionalInt;
 
@@ -72,5 +73,53 @@ public class DarkForestBiomes {
                                 .createDecoratedFeature(Decorator.DARK_OAK_TREE.configure(DecoratorConfig.DEFAULT)))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.DARK_FOREST, BiomeRegistry.register("tall_dark_forest", tall_dark_forest), 0.1F);
+
+        Biome ancient_dark_forest = template.builder()
+                .addDefaultFeature(FOREST_GRASS)
+                .addCustomFeature(
+                        GenerationStep.Feature.VEGETAL_DECORATION,
+                        Feature.RANDOM_SELECTOR.configure(
+                                new RandomFeatureConfig(
+                                        ImmutableList.of(
+                                                Feature.HUGE_BROWN_MUSHROOM.configure(DefaultBiomeFeatures.HUGE_BROWN_MUSHROOM_CONFIG).withChance(0.025F),
+                                                Feature.HUGE_RED_MUSHROOM.configure(DefaultBiomeFeatures.HUGE_RED_MUSHROOM_CONFIG).withChance(0.05F),
+                                                Feature.TREE.configure(
+                                                        new TreeFeatureConfig.Builder(
+                                                                new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()),
+                                                                new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()),
+                                                                new DarkOakFoliagePlacer(0, 1, 0, 0),
+                                                                new AncientTrunkPlacer(8, 8, 8),
+                                                                new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()))
+                                                                .baseHeight(Integer.MAX_VALUE)
+                                                                .method_27375(Heightmap.Type.MOTION_BLOCKING).method_27374().build()).withChance(0.8666667F),
+                                                Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_CONFIG).withChance(0.1F)),
+                                        Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG)))
+                                .createDecoratedFeature(Decorator.DARK_OAK_TREE.configure(DecoratorConfig.DEFAULT)))
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.DARK_FOREST, BiomeRegistry.register("ancient_dark_forest", ancient_dark_forest), 0.1F);
+
+        Biome flooded_dark_forest = template.builder()
+                .depth(-0.05f)
+                .addCustomFeature(
+                        GenerationStep.Feature.VEGETAL_DECORATION,
+                        Feature.RANDOM_SELECTOR.configure(
+                                new RandomFeatureConfig(
+                                        ImmutableList.of(
+                                                Feature.HUGE_BROWN_MUSHROOM.configure(DefaultBiomeFeatures.HUGE_BROWN_MUSHROOM_CONFIG).withChance(0.025F),
+                                                Feature.HUGE_RED_MUSHROOM.configure(DefaultBiomeFeatures.HUGE_RED_MUSHROOM_CONFIG).withChance(0.05F),
+                                                Feature.TREE.configure(
+                                                        new TreeFeatureConfig.Builder(
+                                                                new SimpleBlockStateProvider(Blocks.DARK_OAK_LOG.getDefaultState()),
+                                                                new SimpleBlockStateProvider(Blocks.DARK_OAK_LEAVES.getDefaultState()),
+                                                                new DarkOakFoliagePlacer(0, 0, 0, 0),
+                                                                new DarkOakTrunkPlacer(8, 2, 1),
+                                                                new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()))
+                                                                .baseHeight(4).method_27374().build()).withChance(0.8666667F),
+                                                Feature.TREE.configure(DefaultBiomeFeatures.BIRCH_TREE_CONFIG).withChance(0.2F),
+                                                Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_CONFIG).withChance(0.1F)),
+                                        Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG)))
+                                .createDecoratedFeature(Decorator.DARK_OAK_TREE.configure(DecoratorConfig.DEFAULT)))
+                .build();
+        OverworldBiomes.addBiomeVariant(Biomes.DARK_FOREST, BiomeRegistry.register("flooded_dark_forest", flooded_dark_forest), 0.1F);
     }
 }
