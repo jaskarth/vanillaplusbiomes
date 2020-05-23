@@ -3,11 +3,13 @@ package supercoder79.vanillaplusbiomes;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import supercoder79.vanillaplusbiomes.decorators.ChanceHeightmapQuadrupleDecorator;
+import supercoder79.vanillaplusbiomes.decorators.ConfigurableDarkOakDecorator;
 
 public class VanillaPlusBiomesDecorators {
-    public static ChanceHeightmapQuadrupleDecorator CHANCE_HEIGHTMAP_QUADRUPLE;
+    public static ConfigurableDarkOakDecorator CONFIGURABLE_DARK_OAK;
     public static void register() {
-        CHANCE_HEIGHTMAP_QUADRUPLE = Registry.register(Registry.DECORATOR, new Identifier("vanillaplusbiomes", "chqd"), new ChanceHeightmapQuadrupleDecorator(ChanceDecoratorConfig::deserialize));
+        CONFIGURABLE_DARK_OAK = Registry.register(Registry.DECORATOR, new Identifier("vanillaplusbiomes", "configurable_dark_oak"), new ConfigurableDarkOakDecorator(CountDecoratorConfig::deserialize));
     }
 }
