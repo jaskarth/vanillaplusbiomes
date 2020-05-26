@@ -41,8 +41,7 @@ public class SwampBiomes {
             .downfall(0.9F)
             .waterColor(6388580)
             .waterFogColor(2302743)
-            .addStructureFeature(Feature.STRONGHOLD)
-            .addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
+            .addStructureFeatures(DefaultBiomeFeatures.field_24697, DefaultBiomeFeatures.field_24689)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, SWAMP_VEGETATION, SPRINGS, FOSSILS, CLAY)
             .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.SEAGRASS.configure(new SeagrassFeatureConfig(64, 0.6D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)))

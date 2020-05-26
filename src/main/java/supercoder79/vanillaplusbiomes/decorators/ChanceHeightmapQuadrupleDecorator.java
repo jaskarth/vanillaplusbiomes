@@ -1,11 +1,10 @@
 package supercoder79.vanillaplusbiomes.decorators;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 
@@ -14,7 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 public class ChanceHeightmapQuadrupleDecorator extends Decorator<ChanceDecoratorConfig> {
-    public ChanceHeightmapQuadrupleDecorator(Function<Dynamic<?>, ? extends ChanceDecoratorConfig> function_1) {
+    public ChanceHeightmapQuadrupleDecorator(Codec<ChanceDecoratorConfig> function_1) {
         super(function_1);
     }
 

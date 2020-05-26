@@ -38,6 +38,7 @@ public class DarkForestBiomes {
             .downfall(0.8F)
             .waterColor(4159204)
             .waterFogColor(329011)
+            .addStructureFeature(DefaultBiomeFeatures.field_24690)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
                     FOREST_FLOWERS, DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, FOREST_GRASS, SPRINGS)
             .addDefaultSpawnEntries()

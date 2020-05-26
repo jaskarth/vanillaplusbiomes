@@ -37,9 +37,7 @@ public class SnowyTaigaBiomes {
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, TAIGA_GRASS, DEFAULT_VEGETATION, SPRINGS, SWEET_BERRY_BUSHES,
                     FROZEN_TOP_LAYER)
-            .addStructureFeature(Feature.PILLAGER_OUTPOST, FeatureConfig.DEFAULT)
-            .addStructureFeature(Feature.STRONGHOLD)
-            .addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
+            .addStructureFeatures(DefaultBiomeFeatures.field_24687, DefaultBiomeFeatures.field_24697, DefaultBiomeFeatures.field_24689)
             .addDefaultSpawnEntries()
             .addSpawnEntry(new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4))
             .addSpawnEntry(new Biome.SpawnEntry(EntityType.FOX, 8, 2, 4))

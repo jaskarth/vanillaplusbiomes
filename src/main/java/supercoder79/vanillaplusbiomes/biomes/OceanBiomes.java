@@ -8,6 +8,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -30,8 +31,7 @@ public class OceanBiomes {
             .waterFogColor(329011)
             .addDefaultFeatures(OCEAN_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, WATER_BIOME_OAK_TREES, DEFAULT_VEGETATION, SPRINGS, SEAGRASS_ON_STONE, SEAGRASS, KELP)
-            .addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
-            .addStructureFeature(Feature.SHIPWRECK, new ShipwreckFeatureConfig(true))
+            .addStructureFeatures(DefaultBiomeFeatures.field_24695, DefaultBiomeFeatures.field_24689)
             .addDefaultSpawnEntries()
             .addSpawnEntry(new Biome.SpawnEntry(EntityType.SQUID, 1, 1, 4))
             .addSpawnEntry(new Biome.SpawnEntry(EntityType.COD, 10, 3, 6))
@@ -42,7 +42,7 @@ public class OceanBiomes {
     public static void register() {
         Biome ocean_lagoon = template.builder()
                 .depth(-0.4f)
-                .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.COLD, 0.6F, 0.9F))
+                .addStructureFeature(DefaultBiomeFeatures.field_24699)
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("ocean_lagoon", ocean_lagoon), 0.05);
         Biome cold_ocean_lagoon = template.builder()
@@ -50,14 +50,14 @@ public class OceanBiomes {
                 .depth(-0.5f)
                 .waterColor(4020182)
                 .waterFogColor(329011)
-                .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.COLD, 0.5F, 0.9F))
+                .addStructureFeature(DefaultBiomeFeatures.field_24699)
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.OCEAN, BiomeRegistry.register("cold_ocean_lagoon", cold_ocean_lagoon), 0.05);
         Biome lukewarm_ocean_lagoon = template.builder()
                 .depth(-0.4f)
                 .waterColor(4566514)
                 .waterFogColor(267827)
-                .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.WARM, 0.8F, 0.9F))
+                .addStructureFeature(DefaultBiomeFeatures.field_24699)
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.TROPICAL_FISH, 25, 8, 8))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.PUFFERFISH, 5, 1, 3))
                 .addDefaultFeature(MORE_SEAGRASS)
@@ -67,7 +67,7 @@ public class OceanBiomes {
                 .depth(-0.4f)
                 .waterColor(4445678)
                 .waterFogColor(270131)
-                .addStructureFeature(Feature.OCEAN_RUIN, new OceanRuinFeatureConfig(OceanRuinFeature.BiomeType.WARM, 1.0F, 0.9F))
+                .addStructureFeature(DefaultBiomeFeatures.field_24700)
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.TROPICAL_FISH, 25, 8, 8))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.PUFFERFISH, 5, 1, 3))
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.SEA_PICKLE.configure(new SeaPickleFeatureConfig(20)).createDecoratedFeature(Decorator.CHANCE_TOP_SOLID_HEIGHTMAP.configure(new ChanceDecoratorConfig(16))))

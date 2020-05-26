@@ -10,6 +10,6 @@ import supercoder79.vanillaplusbiomes.decorators.ConfigurableDarkOakDecorator;
 public class VanillaPlusBiomesDecorators {
     public static ConfigurableDarkOakDecorator CONFIGURABLE_DARK_OAK;
     public static void register() {
-        CONFIGURABLE_DARK_OAK = Registry.register(Registry.DECORATOR, new Identifier("vanillaplusbiomes", "configurable_dark_oak"), new ConfigurableDarkOakDecorator(CountDecoratorConfig::deserialize));
+        CONFIGURABLE_DARK_OAK = Registry.register(Registry.DECORATOR, new Identifier("vanillaplusbiomes", "configurable_dark_oak"), new ConfigurableDarkOakDecorator(CountDecoratorConfig.field_24985));
     }
 }

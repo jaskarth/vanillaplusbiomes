@@ -3,7 +3,9 @@ package supercoder79.vanillaplusbiomes.biomes;
 import com.terraformersmc.terraform.biome.builder.TerraformBiome;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.minecraft.block.Blocks;
+import net.minecraft.class_5312;
 import net.minecraft.entity.EntityType;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
@@ -18,6 +20,8 @@ import supercoder79.vanillaplusbiomes.BiomeRegistry;
 import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
 
 public class DesertBiomes {
+    public static final class_5312<StructurePoolFeatureConfig, ? extends StructureFeature<StructurePoolFeatureConfig>> VILLAGE_18 = StructureFeature.VILLAGE.method_28659(new StructurePoolFeatureConfig(new Identifier("village/desert/town_centers"), 18));
+    public static final class_5312<StructurePoolFeatureConfig, ? extends StructureFeature<StructurePoolFeatureConfig>> VILLAGE_12 = StructureFeature.VILLAGE.method_28659(new StructurePoolFeatureConfig(new Identifier("village/desert/town_centers"), 12));
     public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
             .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.SAND_CONFIG).category(Biome.Category.DESERT)
             .depth(0.125F)
@@ -27,9 +31,7 @@ public class DesertBiomes {
             .downfall(0.0F)
             .waterColor(4159204)
             .waterFogColor(329011)
-            .addStructureFeature(Feature.PILLAGER_OUTPOST, FeatureConfig.DEFAULT)
-            .addStructureFeature(Feature.STRONGHOLD)
-            .addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL))
+            .addStructureFeatures(DefaultBiomeFeatures.field_24692, DefaultBiomeFeatures.field_24687, DefaultBiomeFeatures.field_24697, DefaultBiomeFeatures.field_24689)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, MINEABLES, ORES, DISKS,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, DEFAULT_GRASS, DESERT_VEGETATION, FOSSILS, SPRINGS)
             .addDefaultSpawnEntries()
@@ -53,7 +55,7 @@ public class DesertBiomes {
                 .downfall(1)
                 .waterColor(4445678)
                 .waterFogColor(270131)
-                .addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/desert/town_centers", 18))
+                .addStructureFeature(VILLAGE_18)
                 .build();
 
         oasis = BiomeRegistry.register("oasis", oasis);
@@ -62,7 +64,7 @@ public class DesertBiomes {
 
         Biome lush_desert = template.builder()
                 .depth(0.075F)
-                .addStructureFeature(Feature.VILLAGE, new StructurePoolFeatureConfig("village/desert/town_centers", 12))
+                .addStructureFeature(VILLAGE_12)
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.CACTUS_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(100))))
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.DEAD_BUSH_CONFIG).createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(5))))
                 .addDefaultFeature(LAKES)
