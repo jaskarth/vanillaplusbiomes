@@ -47,6 +47,8 @@ public class TaigaBiomes {
                 .scale(0)
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.SEAGRASS.configure(new SeagrassFeatureConfig(48, 0.4D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)))
                 .addDefaultFeature(TAIGA_TREES)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.LILY_PAD_CONFIG)
+                        .createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(1))))
                 .build();
         OverworldBiomes.addHillsBiome(Biomes.TAIGA, BiomeRegistry.register("taiga_lake", taiga_lake), 2F);
         Biome taiga_clearing = template.builder()
@@ -103,6 +105,8 @@ public class TaigaBiomes {
                         new NoneFoliagePlacer(),
                         new FallenTrunkPlacer(5, 4, 0),
                         new TwoLayersFeatureSize(0, 0, 0)).build()), 1)
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.LILY_PAD_CONFIG)
+                        .createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(3))))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.TAIGA, BiomeRegistry.register("fen", fen), 0.1F);
 

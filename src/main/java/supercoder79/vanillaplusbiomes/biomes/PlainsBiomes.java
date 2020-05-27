@@ -64,6 +64,8 @@ public class PlainsBiomes {
                         new StraightTrunkPlacer(6, 2, 0),
                         new TwoLayersFeatureSize(1, 0, 1)).method_27374().baseHeight(2).build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
                         .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(1, 0.5f, 3))))
+                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.LILY_PAD_CONFIG)
+                        .createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(2))))
                 .addSpawnEntry(new Biome.SpawnEntry(EntityType.COD, 10, 6, 12))
                 .scale(0.125f)
                 .build();
