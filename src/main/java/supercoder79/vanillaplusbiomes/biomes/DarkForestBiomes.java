@@ -7,7 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.Feature;
@@ -66,8 +66,8 @@ public class DarkForestBiomes {
                                                                 new DarkOakFoliagePlacer(0, 0, 0, 0),
                                                                 new DarkOakTrunkPlacer(12, 4, 2),
                                                                 new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()))
-                                                                .baseHeight(Integer.MAX_VALUE)
-                                                                .method_27375(Heightmap.Type.MOTION_BLOCKING).method_27374().build()).withChance(0.6666667F),
+                                                                .maxWaterDepth(Integer.MAX_VALUE)
+                                                                .heightmap(Heightmap.Type.MOTION_BLOCKING).ignoreVines().build()).withChance(0.6666667F),
                                                 Feature.TREE.configure(DefaultBiomeFeatures.BIRCH_TREE_CONFIG).withChance(0.2F),
                                                 Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_CONFIG).withChance(0.1F)),
                                         Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG)))
@@ -91,8 +91,8 @@ public class DarkForestBiomes {
                                                                 new DarkOakFoliagePlacer(0, 1, 0, 0),
                                                                 new AncientTrunkPlacer(8, 8, 8),
                                                                 new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()))
-                                                                .baseHeight(Integer.MAX_VALUE)
-                                                                .method_27375(Heightmap.Type.MOTION_BLOCKING).method_27374().build()).withChance(0.8666667F),
+                                                                .maxWaterDepth(Integer.MAX_VALUE)
+                                                                .heightmap(Heightmap.Type.MOTION_BLOCKING).ignoreVines().build()).withChance(0.8666667F),
                                                 Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_CONFIG).withChance(0.1F)),
                                         Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG)))
                                 .createDecoratedFeature(Decorator.DARK_OAK_TREE.configure(DecoratorConfig.DEFAULT)))
@@ -135,9 +135,9 @@ public class DarkForestBiomes {
                                                                 new DarkOakFoliagePlacer(-1, 0, 0, 0),
                                                                 new AncientTrunkPlacer(8, 8, 8),
                                                                 new ThreeLayersFeatureSize(1, 1, 0, 1, 2, OptionalInt.empty()))
-                                                                .baseHeight(Integer.MAX_VALUE)
-                                                                .method_27376(ImmutableList.of(new LeaveVineTreeDecorator(), new TrunkVineTreeDecorator()))
-                                                                .method_27375(Heightmap.Type.MOTION_BLOCKING).method_27374().build()).withChance(0.6666667F),
+                                                                .maxWaterDepth(Integer.MAX_VALUE)
+                                                                .decorators(ImmutableList.of(new LeaveVineTreeDecorator(), new TrunkVineTreeDecorator()))
+                                                                .heightmap(Heightmap.Type.MOTION_BLOCKING).ignoreVines().build()).withChance(0.6666667F),
                                                 Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_CONFIG).withChance(0.1F)),
                                         Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG)))
                                 .createDecoratedFeature(Decorator.COUNT_HEIGHTMAP.configure(new CountDecoratorConfig(12))))

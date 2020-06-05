@@ -1,14 +1,13 @@
 package supercoder79.vanillaplusbiomes.biomes;
 
 import com.google.common.collect.ImmutableList;
-import com.terraformersmc.terraform.biome.builder.DefaultFeature;
 import com.terraformersmc.terraform.biome.builder.TerraformBiome;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;

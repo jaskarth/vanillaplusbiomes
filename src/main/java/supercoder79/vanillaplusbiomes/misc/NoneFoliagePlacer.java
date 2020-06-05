@@ -1,5 +1,6 @@
 package supercoder79.vanillaplusbiomes.misc;
 
+import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
@@ -20,7 +21,7 @@ public class NoneFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    protected void generate(ModifiableTestableWorld world, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, Set<BlockPos> leaves, int i) {
+    protected void generate(ModifiableTestableWorld world, Random random, TreeFeatureConfig config, int trunkHeight, TreeNode treeNode, int foliageHeight, int radius, Set<BlockPos> leaves, int i, BlockBox box) {
 
     }
 
@@ -30,7 +31,7 @@ public class NoneFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    protected boolean isInvalidForLeaves(Random random, int baseHeight, int dx, int dy, int dz, boolean bl) {
+    protected boolean isInvalidForLeaves(Random random, int maxWaterDepth, int dx, int dy, int dz, boolean bl) {
         return false;
     }
 }

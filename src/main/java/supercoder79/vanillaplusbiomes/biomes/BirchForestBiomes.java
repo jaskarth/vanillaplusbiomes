@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
@@ -83,7 +83,7 @@ public class BirchForestBiomes {
                                 new SimpleBlockStateProvider(Blocks.BIRCH_LEAVES.getDefaultState()),
                                 new SpruceFoliagePlacer(1, 0, 0, 2, 1, 1),
                                 new StraightTrunkPlacer(6, 4, 4),
-                                new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                                new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
                                 .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.BIRCH_FOREST, BiomeRegistry.register("tall_birch_tree_forest", tall_tree_forest), 0.05F);

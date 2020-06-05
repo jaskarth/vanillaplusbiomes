@@ -3,12 +3,11 @@ package supercoder79.vanillaplusbiomes.biomes;
 import com.terraformersmc.terraform.biome.builder.TerraformBiome;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.minecraft.block.Blocks;
-import net.minecraft.class_5312;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -20,8 +19,8 @@ import supercoder79.vanillaplusbiomes.BiomeRegistry;
 import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
 
 public class DesertBiomes {
-    public static final class_5312<StructurePoolFeatureConfig, ? extends StructureFeature<StructurePoolFeatureConfig>> VILLAGE_18 = StructureFeature.VILLAGE.method_28659(new StructurePoolFeatureConfig(new Identifier("village/desert/town_centers"), 18));
-    public static final class_5312<StructurePoolFeatureConfig, ? extends StructureFeature<StructurePoolFeatureConfig>> VILLAGE_12 = StructureFeature.VILLAGE.method_28659(new StructurePoolFeatureConfig(new Identifier("village/desert/town_centers"), 12));
+    public static final ConfiguredStructureFeature<StructurePoolFeatureConfig, ? extends StructureFeature<StructurePoolFeatureConfig>> VILLAGE_18 = StructureFeature.VILLAGE.configure(new StructurePoolFeatureConfig(new Identifier("village/desert/town_centers"), 18));
+    public static final ConfiguredStructureFeature<StructurePoolFeatureConfig, ? extends StructureFeature<StructurePoolFeatureConfig>> VILLAGE_12 = StructureFeature.VILLAGE.configure(new StructurePoolFeatureConfig(new Identifier("village/desert/town_centers"), 12));
     public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
             .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.SAND_CONFIG).category(Biome.Category.DESERT)
             .depth(0.125F)

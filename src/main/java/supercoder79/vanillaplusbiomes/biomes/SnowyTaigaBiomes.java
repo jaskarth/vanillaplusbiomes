@@ -6,7 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -89,7 +89,7 @@ public class SnowyTaigaBiomes {
                                 new SimpleBlockStateProvider(Blocks.SPRUCE_LEAVES.getDefaultState()),
                                 new SpruceFoliagePlacer(2, 1, 0, 3, 1, 1),
                                 new StraightTrunkPlacer(10, 4, 4),
-                                new TwoLayersFeatureSize(2, 0, 2)).method_27374().build()), 6)
+                                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build()), 6)
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.SNOWY_TAIGA, BiomeRegistry.register("tall_snowy_taiga", tall_snowy_taiga), 0.1F);
 
@@ -101,7 +101,7 @@ public class SnowyTaigaBiomes {
                                 new SimpleBlockStateProvider(Blocks.SPRUCE_LEAVES.getDefaultState()),
                                 new PineFoliagePlacer(1, 0, 1, 0, 3, 1),
                                 new StraightTrunkPlacer(10, 4, 4),
-                                new TwoLayersFeatureSize(2, 0, 2)).method_27374().build()), 9)
+                                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build()), 9)
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.SNOWY_TAIGA, BiomeRegistry.register("tall_snowy_pine_taiga", tall_snowy_pine_taiga), 0.1F);
     }

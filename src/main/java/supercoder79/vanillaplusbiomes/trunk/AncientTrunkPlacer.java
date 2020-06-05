@@ -17,8 +17,8 @@ import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
 public class AncientTrunkPlacer extends TrunkPlacer {
 
-	public AncientTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
-		super(baseHeight, firstRandomHeight, secondRandomHeight);
+	public AncientTrunkPlacer(int maxWaterDepth, int firstRandomHeight, int secondRandomHeight) {
+		super(maxWaterDepth, firstRandomHeight, secondRandomHeight);
 	}
 
 	@Override

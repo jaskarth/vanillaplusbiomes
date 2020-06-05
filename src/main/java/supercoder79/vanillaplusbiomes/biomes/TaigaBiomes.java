@@ -7,7 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
@@ -91,14 +91,14 @@ public class TaigaBiomes {
                                 new SimpleBlockStateProvider(Blocks.SPRUCE_LEAVES.getDefaultState()),
                                 new PineFoliagePlacer(1, 0, 1, 0, 2, 1),
                                 new StraightTrunkPlacer(6, 4, 0),
-                                new TwoLayersFeatureSize(2, 0, 2)).method_27374().baseHeight(4).build()), 1)
+                                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().maxWaterDepth(4).build()), 1)
                 .addTreeFeature(Feature.TREE.configure(
                         new TreeFeatureConfig.Builder(
                                 new SimpleBlockStateProvider(Blocks.SPRUCE_LOG.getDefaultState()),
                                 new SimpleBlockStateProvider(Blocks.SPRUCE_LEAVES.getDefaultState()),
                                 new SpruceFoliagePlacer(1, 1, 0, 2, 1, 1),
                                 new StraightTrunkPlacer(4, 3, 2),
-                                new TwoLayersFeatureSize(2, 0, 2)).method_27374().baseHeight(2).build()), 2)
+                                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().maxWaterDepth(2).build()), 2)
                 .addTreeFeature(Feature.TREE.configure(new TreeFeatureConfig.Builder(
                         new SimpleBlockStateProvider(Blocks.SPRUCE_LOG.getDefaultState()),
                         new SimpleBlockStateProvider(Blocks.SPRUCE_LEAVES.getDefaultState()),
@@ -135,7 +135,7 @@ public class TaigaBiomes {
                                 new SimpleBlockStateProvider(Blocks.SPRUCE_LEAVES.getDefaultState()),
                                 new SpruceFoliagePlacer(2, 1, 0, 3, 1, 1),
                                 new StraightTrunkPlacer(10, 4, 4),
-                                new TwoLayersFeatureSize(2, 0, 2)).method_27374().build()), 6)
+                                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build()), 6)
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.TAIGA, BiomeRegistry.register("tall_taiga", tall_taiga), 0.1F);
 
@@ -147,7 +147,7 @@ public class TaigaBiomes {
                                 new SimpleBlockStateProvider(Blocks.SPRUCE_LEAVES.getDefaultState()),
                                 new PineFoliagePlacer(1, 0, 1, 0, 3, 1),
                                 new StraightTrunkPlacer(10, 4, 4),
-                                new TwoLayersFeatureSize(2, 0, 2)).method_27374().build()), 9)
+                                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build()), 9)
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.TAIGA, BiomeRegistry.register("tall_pine_taiga", tall_pine_taiga), 0.1F);
     }

@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
@@ -28,8 +28,8 @@ public class ForestBiomes {
             new BlobFoliagePlacer(2, 0, 0, 0, 3),
             new StraightTrunkPlacer(5, 2, 6),
             new TwoLayersFeatureSize(1, 0, 1))
-                .method_27374()
-                .method_27376(ImmutableList.of(new BeehiveTreeDecorator(0.002F))).build();
+                .ignoreVines()
+                .decorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))).build();
 
 
     public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
@@ -158,7 +158,7 @@ public class ForestBiomes {
                                                         new SimpleBlockStateProvider(Blocks.BIRCH_LEAVES.getDefaultState()),
                                                         new BlobFoliagePlacer(2, 0, 0, 0, 3),
                                                         new StraightTrunkPlacer(6, 2, 0),
-                                                        new TwoLayersFeatureSize(1, 0, 1)).method_27374().baseHeight(2).build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                                                        new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().maxWaterDepth(2).build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
                                                         .withChance(0.2F),
                                                 Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_WITH_RARE_BEEHIVES_CONFIG).withChance(0.1F)),
                                         Feature.TREE.configure(new TreeFeatureConfig.Builder(
@@ -166,7 +166,7 @@ public class ForestBiomes {
                                                 new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
                                                 new BlobFoliagePlacer(2, 0, 0, 0, 3),
                                                 new StraightTrunkPlacer(6, 2, 0),
-                                                new TwoLayersFeatureSize(1, 0, 1)).method_27374().baseHeight(2).build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))))
+                                                new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().maxWaterDepth(2).build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))))
                                 .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("flooded_forest", flooded_forest), 0.1F);
@@ -189,7 +189,7 @@ public class ForestBiomes {
                                                         new SimpleBlockStateProvider(Blocks.BIRCH_LEAVES.getDefaultState()),
                                                         new AcaciaFoliagePlacer(2, 0, 0, 0),
                                                         new StraightTrunkPlacer(5, 2, 0),
-                                                        new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                                                        new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
                                                         .withChance(0.2F),
                                                 Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_WITH_RARE_BEEHIVES_CONFIG).withChance(0.025F)),
                                         Feature.TREE.configure(new TreeFeatureConfig.Builder(
@@ -197,7 +197,7 @@ public class ForestBiomes {
                                                 new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
                                                 new AcaciaFoliagePlacer(2, 0, 0, 0),
                                                 new StraightTrunkPlacer(4, 2, 0),
-                                                new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))))
+                                                new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))))
                                 .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("flat_tree_forest", flat_tree_forest), 0.1F);
@@ -220,7 +220,7 @@ public class ForestBiomes {
                                                         new SimpleBlockStateProvider(Blocks.BIRCH_LEAVES.getDefaultState()),
                                                         new LargeOakFoliagePlacer(2, 0, 0, 0, 4),
                                                         new StraightTrunkPlacer(5, 2, 0),
-                                                        new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                                                        new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
                                                         .withChance(0.2F),
                                                 Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_WITH_RARE_BEEHIVES_CONFIG).withChance(0.025F)),
                                         Feature.TREE.configure(new TreeFeatureConfig.Builder(
@@ -228,7 +228,7 @@ public class ForestBiomes {
                                                 new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
                                                 new LargeOakFoliagePlacer(2, 0, 0, 0, 4),
                                                 new StraightTrunkPlacer(4, 2, 0),
-                                                new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))))
+                                                new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))))
                                 .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("balloon_forest", balloon_forest), 0.1F);
@@ -248,7 +248,7 @@ public class ForestBiomes {
                                                 new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
                                                 new SpruceFoliagePlacer(1, 0, 0, 2, 1, 1),
                                                 new StraightTrunkPlacer(6, 3, 3),
-                                                new TwoLayersFeatureSize(1, 0, 1)).method_27374().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                                                new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
                                 .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))))
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.FOREST, BiomeRegistry.register("tall_tree_forest", tall_tree_forest), 0.05F);

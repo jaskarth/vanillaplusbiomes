@@ -7,7 +7,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
@@ -62,7 +62,7 @@ public class PlainsBiomes {
                         new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
                         new BlobFoliagePlacer(2, 0, 0, 0, 3),
                         new StraightTrunkPlacer(6, 2, 0),
-                        new TwoLayersFeatureSize(1, 0, 1)).method_27374().baseHeight(2).build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
+                        new TwoLayersFeatureSize(1, 0, 1)).ignoreVines().maxWaterDepth(2).build().setTreeDecorators(ImmutableList.of(new BeehiveTreeDecorator(0.002F))))
                         .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(1, 0.5f, 3))))
                 .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.LILY_PAD_CONFIG)
                         .createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(2))))

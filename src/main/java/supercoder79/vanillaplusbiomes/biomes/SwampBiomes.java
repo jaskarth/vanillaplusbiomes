@@ -8,7 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.*;
@@ -30,7 +30,7 @@ public class SwampBiomes {
             new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
             new BlobFoliagePlacer(2, 0, 0, 0, 1),
             new StraightTrunkPlacer(3, 4, 4),
-            new TwoLayersFeatureSize(1, 0, 1)).baseHeight(2).method_27376(ImmutableList.of(new LeaveVineTreeDecorator())).build();
+            new TwoLayersFeatureSize(1, 0, 1)).maxWaterDepth(2).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
 
     public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
             .configureSurfaceBuilder(SurfaceBuilder.SWAMP, SurfaceBuilder.GRASS_CONFIG).category(Biome.Category.SWAMP)

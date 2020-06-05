@@ -16,8 +16,8 @@ import java.util.Random;
 import java.util.Set;
 
 public class FallenTrunkPlacer extends StraightTrunkPlacer {
-    public FallenTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
-        super(baseHeight, firstRandomHeight, secondRandomHeight);
+    public FallenTrunkPlacer(int maxWaterDepth, int firstRandomHeight, int secondRandomHeight) {
+        super(maxWaterDepth, firstRandomHeight, secondRandomHeight);
     }
 
     @Override
