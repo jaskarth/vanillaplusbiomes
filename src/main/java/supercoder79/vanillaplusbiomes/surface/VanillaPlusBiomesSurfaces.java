@@ -7,8 +7,10 @@ import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
 public class VanillaPlusBiomesSurfaces {
     public static SurfaceBuilder<TernarySurfaceConfig> ROCKY_BADLANDS;
+    public static SurfaceBuilder<TernarySurfaceConfig> WEATHERED_BADLANDS;
 
     public static void register() {
         ROCKY_BADLANDS = Registry.register(Registry.SURFACE_BUILDER, new Identifier("vanillaplusbiomes", "rocky_badlands"), new RockyBadlandsSurfaceBuilder(TernarySurfaceConfig.CODEC));
+        WEATHERED_BADLANDS = Registry.register(Registry.SURFACE_BUILDER, new Identifier("vanillaplusbiomes", "weathered_badlands"), new WeatheredBadlandsSurfaceBuilder(TernarySurfaceConfig.CODEC));
     }
 }
