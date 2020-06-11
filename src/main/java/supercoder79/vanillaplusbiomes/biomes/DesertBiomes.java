@@ -14,13 +14,14 @@ import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
-import supercoder79.vanillaplusbiomes.BiomeRegistry;
 
 import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
 
 public class DesertBiomes {
     public static final ConfiguredStructureFeature<StructurePoolFeatureConfig, ? extends StructureFeature<StructurePoolFeatureConfig>> VILLAGE_18 = StructureFeature.VILLAGE.configure(new StructurePoolFeatureConfig(new Identifier("village/desert/town_centers"), 18));
     public static final ConfiguredStructureFeature<StructurePoolFeatureConfig, ? extends StructureFeature<StructurePoolFeatureConfig>> VILLAGE_12 = StructureFeature.VILLAGE.configure(new StructurePoolFeatureConfig(new Identifier("village/desert/town_centers"), 12));
+
+    @SuppressWarnings("unchecked")
     public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
             .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.SAND_CONFIG).category(Biome.Category.DESERT)
             .depth(0.125F)
@@ -30,7 +31,7 @@ public class DesertBiomes {
             .downfall(0.0F)
             .waterColor(4159204)
             .waterFogColor(329011)
-            .addStructureFeatures(DefaultBiomeFeatures.field_24692, DefaultBiomeFeatures.field_24687, DefaultBiomeFeatures.field_24697, DefaultBiomeFeatures.field_24689)
+            .addStructureFeatures(DefaultBiomeFeatures.DESERT_PYRAMID, DefaultBiomeFeatures.PILLAGER_OUTPOST, DefaultBiomeFeatures.STRONGHOLD, DefaultBiomeFeatures.NORMAL_MINESHAFT)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, DUNGEONS, MINEABLES, ORES, DISKS,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, DEFAULT_GRASS, DESERT_VEGETATION, FOSSILS, SPRINGS)
             .addDefaultSpawnEntries()

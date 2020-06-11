@@ -16,7 +16,6 @@ import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-import supercoder79.vanillaplusbiomes.BiomeRegistry;
 import supercoder79.vanillaplusbiomes.misc.FallenTrunkPlacer;
 import supercoder79.vanillaplusbiomes.misc.NoneFoliagePlacer;
 

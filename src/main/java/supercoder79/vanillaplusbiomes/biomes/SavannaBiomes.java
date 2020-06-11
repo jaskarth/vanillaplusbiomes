@@ -14,13 +14,13 @@ import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BushFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
-import supercoder79.vanillaplusbiomes.BiomeRegistry;
 import supercoder79.vanillaplusbiomes.misc.FallenTrunkPlacer;
 
 import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
 
 public class SavannaBiomes {
 
+    @SuppressWarnings("unchecked")
     public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
             .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
             .precipitation(Biome.Precipitation.NONE)
@@ -33,7 +33,7 @@ public class SavannaBiomes {
             .waterFogColor(329011)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, SAVANNA_TALL_GRASS, SAVANNA_GRASS, DEFAULT_VEGETATION, SPRINGS)
-            .addStructureFeatures(DefaultBiomeFeatures.field_24708, DefaultBiomeFeatures.field_24687, DefaultBiomeFeatures.field_24697, DefaultBiomeFeatures.field_24689)
+            .addStructureFeatures(DefaultBiomeFeatures.SAVANNA_VILLAGE, DefaultBiomeFeatures.PILLAGER_OUTPOST, DefaultBiomeFeatures.STRONGHOLD, DefaultBiomeFeatures.NORMAL_MINESHAFT)
             .addDefaultSpawnEntries()
     );
 

@@ -7,13 +7,11 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
-import supercoder79.vanillaplusbiomes.BiomeRegistry;
 
 import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
 import static com.terraformersmc.terraform.biome.builder.DefaultFeature.SPRINGS;

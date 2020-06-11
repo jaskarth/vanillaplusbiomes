@@ -18,7 +18,6 @@ import net.minecraft.world.gen.foliage.BushFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-import supercoder79.vanillaplusbiomes.BiomeRegistry;
 import supercoder79.vanillaplusbiomes.misc.FallenTrunkPlacer;
 import supercoder79.vanillaplusbiomes.misc.NoneFoliagePlacer;
 
@@ -32,6 +31,7 @@ public class SwampBiomes {
             new StraightTrunkPlacer(3, 4, 4),
             new TwoLayersFeatureSize(1, 0, 1)).maxWaterDepth(2).decorators(ImmutableList.of(new LeaveVineTreeDecorator())).build();
 
+    @SuppressWarnings("unchecked")
     public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
             .configureSurfaceBuilder(SurfaceBuilder.SWAMP, SurfaceBuilder.GRASS_CONFIG).category(Biome.Category.SWAMP)
             .depth(-0.2F)
@@ -41,7 +41,7 @@ public class SwampBiomes {
             .downfall(0.9F)
             .waterColor(6388580)
             .waterFogColor(2302743)
-            .addStructureFeatures(DefaultBiomeFeatures.field_24697, DefaultBiomeFeatures.field_24689)
+            .addStructureFeatures(DefaultBiomeFeatures.STRONGHOLD, DefaultBiomeFeatures.SWAMP_HUT)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, SWAMP_VEGETATION, SPRINGS, FOSSILS, CLAY)
             .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.SEAGRASS.configure(new SeagrassFeatureConfig(64, 0.6D)).createDecoratedFeature(Decorator.TOP_SOLID_HEIGHTMAP.configure(DecoratorConfig.DEFAULT)))

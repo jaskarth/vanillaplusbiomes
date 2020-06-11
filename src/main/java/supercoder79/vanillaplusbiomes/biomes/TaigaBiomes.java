@@ -17,14 +17,14 @@ import net.minecraft.world.gen.foliage.SpruceFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-import supercoder79.vanillaplusbiomes.BiomeRegistry;
-import supercoder79.vanillaplusbiomes.VanillaPlusBiomesFeatures;
 import supercoder79.vanillaplusbiomes.misc.FallenTrunkPlacer;
 import supercoder79.vanillaplusbiomes.misc.NoneFoliagePlacer;
 
 import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
 
 public class TaigaBiomes {
+
+    @SuppressWarnings("unchecked")
     public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
             .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG).category(Biome.Category.FOREST)
             .depth(0.35F)
@@ -36,7 +36,7 @@ public class TaigaBiomes {
             .waterFogColor(329011)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, TAIGA_GRASS, DEFAULT_VEGETATION, SPRINGS, SWEET_BERRY_BUSHES, FROZEN_TOP_LAYER)
-            .addStructureFeatures(DefaultBiomeFeatures.field_24710, DefaultBiomeFeatures.field_24687, DefaultBiomeFeatures.field_24697, DefaultBiomeFeatures.field_24689)
+            .addStructureFeatures(DefaultBiomeFeatures.TAIGA_VILLAGE, DefaultBiomeFeatures.PILLAGER_OUTPOST, DefaultBiomeFeatures.STRONGHOLD, DefaultBiomeFeatures.NORMAL_MINESHAFT)
             .addDefaultSpawnEntries()
             .addSpawnEntry(new Biome.SpawnEntry(EntityType.WOLF, 5, 4, 4))
             .addSpawnEntry(new Biome.SpawnEntry(EntityType.FOX, 8, 2, 4))

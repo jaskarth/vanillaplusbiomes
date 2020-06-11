@@ -11,7 +11,6 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.*;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
@@ -19,8 +18,6 @@ import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
-import supercoder79.vanillaplusbiomes.BiomeRegistry;
-import supercoder79.vanillaplusbiomes.VanillaPlusBiomesDecorators;
 import supercoder79.vanillaplusbiomes.trunk.AncientTrunkPlacer;
 
 import java.util.OptionalInt;
@@ -38,7 +35,7 @@ public class DarkForestBiomes {
             .downfall(0.8F)
             .waterColor(4159204)
             .waterFogColor(329011)
-            .addStructureFeature(DefaultBiomeFeatures.field_24690)
+            .addStructureFeature(DefaultBiomeFeatures.MANSION)
             .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
                     FOREST_FLOWERS, DEFAULT_MUSHROOMS, DEFAULT_VEGETATION, FOREST_GRASS, SPRINGS)
             .addDefaultSpawnEntries()

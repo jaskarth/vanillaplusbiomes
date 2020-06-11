@@ -1,4 +1,4 @@
-package supercoder79.vanillaplusbiomes;
+package supercoder79.vanillaplusbiomes.biomes;
 
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
