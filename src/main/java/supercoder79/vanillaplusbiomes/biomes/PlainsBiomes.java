@@ -87,7 +87,7 @@ public class PlainsBiomes {
 
         Biome rocky_plains = template.builder()
                 .depth(0.2f)
-                .addCustomFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, Feature.FOREST_ROCK.configure(new BoulderFeatureConfig(Blocks.COBBLESTONE.getDefaultState(), 0)).createDecoratedFeature(Decorator.FOREST_ROCK.configure(new CountDecoratorConfig(3))))
+                .addCustomFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS, Feature.FOREST_ROCK.configure(new ForestRockFeatureConfig(Blocks.COBBLESTONE.getDefaultState(), 0)).createDecoratedFeature(Decorator.FOREST_ROCK.configure(new CountDecoratorConfig(3))))
                 .scale(0.2f)
                 .build();
         OverworldBiomes.addBiomeVariant(Biomes.PLAINS, BiomeRegistry.register("rocky_plains", rocky_plains), 0.1f);
