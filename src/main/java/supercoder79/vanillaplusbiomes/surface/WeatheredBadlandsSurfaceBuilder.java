@@ -20,11 +20,11 @@ public class WeatheredBadlandsSurfaceBuilder extends BadlandsSurfaceBuilder {
       super(codec);
    }
 
-   public void generate(Random random, Chunk chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState defaultFluid, int l, long m, TernarySurfaceConfig ternarySurfaceConfig) {
+   public void generate(Random random, Chunk chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, TernarySurfaceConfig config) {
       int localX = x & 15;
       int localZ = z & 15;
       BlockState blockState3 = WHITE_TERRACOTTA;
-      BlockState blockState4 = biome.getSurfaceConfig().getUnderMaterial();
+      BlockState blockState4 = config.getUnderMaterial();
       int surfaceDepth = (int)(noise / 3.0D + 3.0D + random.nextDouble() * 0.25D);
       boolean cosNoise = Math.cos(noise / 3.0D * 3.141592653589793D) > 0.0D;
       int q = -1;
@@ -44,17 +44,17 @@ public class WeatheredBadlandsSurfaceBuilder extends BadlandsSurfaceBuilder {
                   if (surfaceDepth <= 0) {
                      blockState3 = Blocks.AIR.getDefaultState();
                      blockState4 = defaultBlock;
-                  } else if (y >= l - 4 && y <= l + 1) {
+                  } else if (y >= seaLevel - 4 && y <= seaLevel + 1) {
                      blockState3 = WHITE_TERRACOTTA;
-                     blockState4 = biome.getSurfaceConfig().getUnderMaterial();
+                     blockState4 = config.getUnderMaterial();
                   }
 
-                  if (y < l && (blockState3 == null || blockState3.isAir())) {
+                  if (y < seaLevel && (blockState3 == null || blockState3.isAir())) {
                      blockState3 = defaultFluid;
                   }
 
-                  q = surfaceDepth + Math.max(0, y - l);
-                  if (y >= l - 1) {
+                  q = surfaceDepth + Math.max(0, y - seaLevel);
+                  if (y >= seaLevel - 1) {
                      if (y > 80 + surfaceDepth * 2) {
                         if (noise > 1.8) {
                            int sculptHeight = (int)(7 + (Math.cos(noise / 3.0D * 3.141592653589793D) * 2));
@@ -84,7 +84,7 @@ public class WeatheredBadlandsSurfaceBuilder extends BadlandsSurfaceBuilder {
                               chunk.setBlockState(mutable, this.calculateLayerBlockState(x, y, z), false);
                            }
                         }
-                     } else if (y > l + 3 + surfaceDepth) {
+                     } else if (y > seaLevel + 3 + surfaceDepth) {
                         BlockState blockState8;
                         if (y >= 64 && y <= 127) {
                            if (cosNoise) {
@@ -98,7 +98,7 @@ public class WeatheredBadlandsSurfaceBuilder extends BadlandsSurfaceBuilder {
 
                         chunk.setBlockState(mutable, blockState8, false);
                      } else {
-                        chunk.setBlockState(mutable, biome.getSurfaceConfig().getTopMaterial(), false);
+                        chunk.setBlockState(mutable, config.getTopMaterial(), false);
                         bl2 = true;
                      }
                   } else {

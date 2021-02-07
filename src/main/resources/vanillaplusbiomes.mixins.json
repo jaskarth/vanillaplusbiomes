@@ -3,6 +3,8 @@
   "package": "supercoder79.vanillaplusbiomes.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "FoliagePlacerTypeAccessor",
+    "TrunkPlacerTypeAccessor"
   ],
   "client": [
   ],

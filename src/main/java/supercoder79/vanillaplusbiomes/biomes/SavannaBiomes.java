@@ -1,67 +1,61 @@
 package supercoder79.vanillaplusbiomes.biomes;
 
-import com.terraformersmc.terraform.biome.builder.TerraformBiome;
-import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
-import net.minecraft.block.Blocks;
+import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
+import com.terraformersmc.terraform.biomebuilder.TerraformBiomeBuilder;
+import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
+import net.minecraft.world.biome.BiomeEffects;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.CountDecoratorConfig;
-import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BushFoliagePlacer;
-import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
-import supercoder79.vanillaplusbiomes.misc.FallenTrunkPlacer;
+import supercoder79.vanillaplusbiomes.feature.VanillaPlusConfiguredFeatures;
+import supercoder79.vanillaplusbiomes.util.BiomeHelper;
 
-import static com.terraformersmc.terraform.biome.builder.DefaultFeature.*;
+import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.*;
 
 public class SavannaBiomes {
 
-    @SuppressWarnings("unchecked")
-    public static TerraformBiome.Template template = new TerraformBiome.Template(TerraformBiome.builder()
-            .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
+    public static BiomeTemplate template = new BiomeTemplate(TerraformBiomeBuilder.create()
+            .surfaceBuilder(ConfiguredSurfaceBuilders.GRASS)
             .precipitation(Biome.Precipitation.NONE)
             .category(Biome.Category.SAVANNA)
             .depth(0.125F)
             .scale(0.05F)
             .temperature(1.2F)
             .downfall(0.0F)
-            .waterColor(4159204)
-            .waterFogColor(329011)
-            .addDefaultFeatures(LAND_CARVERS, STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
+            .effects(new BiomeEffects.Builder()
+                    .waterColor(0x3F76E4)
+                    .waterFogColor(0x50533)
+                    .fogColor(12638463)
+                    .skyColor(BiomeHelper.getSkyColor(1.2f))
+            )
+            .addDefaultFeatures(LAND_CARVERS, DEFAULT_UNDERGROUND_STRUCTURES, LAKES, DUNGEONS, MINEABLES, ORES, DISKS,
                     DEFAULT_FLOWERS, DEFAULT_MUSHROOMS, SAVANNA_TALL_GRASS, SAVANNA_GRASS, DEFAULT_VEGETATION, SPRINGS)
-            .addStructureFeatures(DefaultBiomeFeatures.SAVANNA_VILLAGE, DefaultBiomeFeatures.PILLAGER_OUTPOST, DefaultBiomeFeatures.STRONGHOLD, DefaultBiomeFeatures.NORMAL_MINESHAFT)
+            .addStructureFeatures(ConfiguredStructureFeatures.VILLAGE_SAVANNA, ConfiguredStructureFeatures.PILLAGER_OUTPOST, ConfiguredStructureFeatures.STRONGHOLD, ConfiguredStructureFeatures.MINESHAFT)
             .addDefaultSpawnEntries()
     );
 
     public static void register() {
         Biome savanna_thicket = template.builder()
-                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.ACACIA_TREE_CONFIG), 3)
+                .addFeature(GenerationStep.Feature.VEGETAL_DECORATION, VanillaPlusConfiguredFeatures.ACACIA_3)
                 .build();
-        OverworldBiomes.addHillsBiome(Biomes.SAVANNA, BiomeRegistry.register("savanna_thicket", savanna_thicket), 0.4f);
+        OverworldBiomes.addHillsBiome(BiomeKeys.SAVANNA, BiomeRegistry.register("savanna_thicket", savanna_thicket), 0.4f);
 
         Biome savanna_lake = template.builder()
                 .depth(-0.25F)
                 .scale(0)
-                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.ACACIA_TREE_CONFIG), 3)
-                .addCustomFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_PATCH.configure(DefaultBiomeFeatures.LILY_PAD_CONFIG)
-                        .createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE.configure(new CountDecoratorConfig(1))))
+                .addFeature(GenerationStep.Feature.VEGETAL_DECORATION, VanillaPlusConfiguredFeatures.ACACIA_3)
+                .addFeature(GenerationStep.Feature.VEGETAL_DECORATION, VanillaPlusConfiguredFeatures.LILYPAD_1)
                 .build();
-        OverworldBiomes.addHillsBiome(Biomes.SAVANNA, BiomeRegistry.register("savanna_lake", savanna_lake), 0.3f);
+        OverworldBiomes.addHillsBiome(BiomeKeys.SAVANNA, BiomeRegistry.register("savanna_lake", savanna_lake), 0.3f);
 
         Biome savanna_scrub = template.builder()
                 .scale(0)
-                .addTreeFeature(Feature.TREE.configure(DefaultBiomeFeatures.ACACIA_TREE_CONFIG), 1)
-                .addTreeFeature(Feature.TREE.configure(new TreeFeatureConfig.Builder(
-                        new SimpleBlockStateProvider(Blocks.OAK_LOG.getDefaultState()),
-                        new SimpleBlockStateProvider(Blocks.OAK_LEAVES.getDefaultState()),
-                        new BushFoliagePlacer(2, 0, 1, 0, 2),
-                        new FallenTrunkPlacer(1, 0, 0),
-                        new TwoLayersFeatureSize(0, 0, 0)).build()), 1)
+                .addFeature(GenerationStep.Feature.VEGETAL_DECORATION, VanillaPlusConfiguredFeatures.ACACIA_1)
+                .addFeature(GenerationStep.Feature.VEGETAL_DECORATION, VanillaPlusConfiguredFeatures.ACACIA_BUSH)
                 .build();
-        OverworldBiomes.addHillsBiome(Biomes.SAVANNA, BiomeRegistry.register("savanna_scrub", savanna_scrub), 0.3f);
+        OverworldBiomes.addHillsBiome(BiomeKeys.SAVANNA, BiomeRegistry.register("savanna_scrub", savanna_scrub), 0.3f);
     }
 }

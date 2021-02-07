@@ -1,6 +1,8 @@
-package supercoder79.vanillaplusbiomes.misc;
+package supercoder79.vanillaplusbiomes.trunk;
 
 import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
@@ -10,20 +12,26 @@ import net.minecraft.world.gen.feature.TreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import net.minecraft.world.gen.trunk.TrunkPlacerType;
 
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 public class FallenTrunkPlacer extends StraightTrunkPlacer {
-    public FallenTrunkPlacer(int maxWaterDepth, int firstRandomHeight, int secondRandomHeight) {
-        super(maxWaterDepth, firstRandomHeight, secondRandomHeight);
+    public static final Codec<FallenTrunkPlacer> CODEC = RecordCodecBuilder.create((instance) -> method_28904(instance).apply(instance, FallenTrunkPlacer::new));
+
+    public FallenTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
+        super(baseHeight, firstRandomHeight, secondRandomHeight);
+    }
+
+    @Override
+    protected TrunkPlacerType<?> getType() {
+        return VanillaPlusTrunkPlacers.FALLEN;
     }
 
     @Override
     public List<FoliagePlacer.TreeNode> generate(ModifiableTestableWorld world, Random random, int trunkHeight, BlockPos pos, Set<BlockPos> set, BlockBox blockBox, TreeFeatureConfig treeFeatureConfig) {
-        method_27400(world, pos.down());
-
         // Axis
         Direction.Axis axis = random.nextBoolean() ? Direction.Axis.X : Direction.Axis.Z;
         Direction direction = Direction.from(axis, random.nextBoolean() ? Direction.AxisDirection.POSITIVE : Direction.AxisDirection.NEGATIVE);
@@ -32,12 +40,12 @@ public class FallenTrunkPlacer extends StraightTrunkPlacer {
             placeTrunkBlock(world, random, pos.offset(direction, i), set, blockBox, treeFeatureConfig, axis);
         }
 
-        return ImmutableList.of(new FoliagePlacer.TreeNode(pos.up(trunkHeight), 0, false));
+        return ImmutableList.of();
     }
 
     protected static boolean placeTrunkBlock(ModifiableTestableWorld modifiableTestableWorld, Random random, BlockPos blockPos, Set<BlockPos> set, BlockBox blockBox, TreeFeatureConfig treeFeatureConfig, Direction.Axis axis) {
         if (TreeFeature.canReplace(modifiableTestableWorld, blockPos)) {
-            method_27404(modifiableTestableWorld, blockPos, treeFeatureConfig.trunkProvider.getBlockState(random, blockPos).with(PillarBlock.AXIS, axis), blockBox);
+            setBlockState(modifiableTestableWorld, blockPos, treeFeatureConfig.trunkProvider.getBlockState(random, blockPos).with(PillarBlock.AXIS, axis), blockBox);
             set.add(blockPos.toImmutable());
             return true;
         } else {

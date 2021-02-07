@@ -1,8 +1,10 @@
-package supercoder79.vanillaplusbiomes.misc;
+package supercoder79.vanillaplusbiomes.foliage;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.ModifiableTestableWorld;
+import net.minecraft.world.gen.UniformIntDistribution;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.foliage.FoliagePlacerType;
@@ -11,13 +13,15 @@ import java.util.Random;
 import java.util.Set;
 
 public class NoneFoliagePlacer extends FoliagePlacer {
+    public static final Codec<NoneFoliagePlacer> CODEC = Codec.unit(new NoneFoliagePlacer());
+
     public NoneFoliagePlacer() {
-        super(0, 0,0, 0);
+        super(UniformIntDistribution.of(0), UniformIntDistribution.of(0));
     }
 
     @Override
-    protected FoliagePlacerType<?> method_28843() {
-        return null;
+    protected FoliagePlacerType<?> getType() {
+        return VanillaPlusFoliagePlacers.NONE;
     }
 
     @Override
@@ -26,7 +30,7 @@ public class NoneFoliagePlacer extends FoliagePlacer {
     }
 
     @Override
-    public int getHeight(Random random, int trunkHeight, TreeFeatureConfig config) {
+    public int getRandomHeight(Random random, int trunkHeight, TreeFeatureConfig config) {
         return 0;
     }
 

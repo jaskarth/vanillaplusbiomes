@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.2.7-SNAPSHOT'
+	id 'fabric-loom' version '0.5-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -26,18 +26,19 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	
-	modCompile "com.terraformersmc:terraform:${project.terraform_version}"
 
-	include "com.terraformersmc:terraform:${project.terraform_version}"
+	modRuntime ("com.github.SuperCoder7979:databreaker:0.2.6") {
+		exclude module : "fabric-loader"
+	}
 
-//	modRuntime ("com.github.SuperCoder7979:databreaker:ae132ffd5534d3e4b10db9022f10fca3c5cee36c") {
-//		exclude module : "fabric-loader"
-//	}
-//
-//	modRuntime ("com.github.mrmangohands:sodium-fabric:57f8a1013ba2a8661daf8a58ab6184eda3e4ac9e")
-//	modRuntime ("com.github.SuperCoder7979:phosphor-fabric:11d964bf07d44bdf6cbdbb7cce25ed9da81d9f78")
-//	modRuntime ("com.github.jellysquid3:lithium-fabric:21769c40c59330ea9eacbd8139a2057a86f0d028")
+	modCompile "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_version}"
+	include "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_version}"
+
+	modCompile "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:${project.terraform_biomes_version}"
+	include "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:${project.terraform_biomes_version}"
+
+	modCompile "com.terraformersmc.terraform-api:terraform-overworld-biome-extensions-api-v1:${project.terraform_biome_ext_version}"
+	include "com.terraformersmc.terraform-api:terraform-overworld-biome-extensions-api-v1:${project.terraform_biome_ext_version}"
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
