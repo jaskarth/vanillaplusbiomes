@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.5-SNAPSHOT'
+	id 'fabric-loom' version '0.8-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -12,7 +12,7 @@ group = project.maven_group
 
 repositories {
 	mavenLocal()
-	maven { url = "https://jitpack.io" }
+	maven { url = "https://maven.gegy.dev" }
 }
 
 minecraft {
@@ -22,23 +22,14 @@ dependencies {
 	//to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	modRuntime ("com.github.SuperCoder7979:databreaker:0.2.6") {
+	modRuntime ("supercoder79:databreaker:0.2.7") {
 		exclude module : "fabric-loader"
 	}
-
-	modCompile "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_version}"
-	include "com.terraformersmc.terraform-api:terraform-shapes-api-v1:${project.terraform_shapes_version}"
-
-	modCompile "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:${project.terraform_biomes_version}"
-	include "com.terraformersmc.terraform-api:terraform-biome-builder-api-v1:${project.terraform_biomes_version}"
-
-	modCompile "com.terraformersmc.terraform-api:terraform-overworld-biome-extensions-api-v1:${project.terraform_biome_ext_version}"
-	include "com.terraformersmc.terraform-api:terraform-overworld-biome-extensions-api-v1:${project.terraform_biome_ext_version}"
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
@@ -47,13 +38,8 @@ dependencies {
 processResources {
 	inputs.property "version", project.version
 
-	from(sourceSets.main.resources.srcDirs) {
-		include "fabric.mod.json"
+	filesMatching("fabric.mod.json") {
 		expand "version": project.version
-	}
-
-	from(sourceSets.main.resources.srcDirs) {
-		exclude "fabric.mod.json"
 	}
 }
 

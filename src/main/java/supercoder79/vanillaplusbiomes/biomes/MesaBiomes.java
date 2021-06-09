@@ -1,8 +1,5 @@
 package supercoder79.vanillaplusbiomes.biomes;
 
-import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
-import com.terraformersmc.terraform.biomebuilder.TerraformBiomeBuilder;
-import com.terraformersmc.terraform.overworldbiomes.OverworldBiomesExt;
 import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
@@ -11,13 +8,13 @@ import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
-import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
+import supercoder79.vanillaplusbiomes.biomes.api.BiomeTemplate;
+import supercoder79.vanillaplusbiomes.biomes.api.TerraformBiomeBuilder;
 import supercoder79.vanillaplusbiomes.feature.VanillaPlusConfiguredFeatures;
-import supercoder79.vanillaplusbiomes.surface.VanillaPlusBiomesSurfaces;
 import supercoder79.vanillaplusbiomes.surface.VanillaPlusConfiguredSurfaceBuilders;
 import supercoder79.vanillaplusbiomes.util.BiomeHelper;
 
-import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.*;
+import static supercoder79.vanillaplusbiomes.biomes.api.DefaultFeature.*;
 
 public class MesaBiomes {
     public static BiomeTemplate template = new BiomeTemplate(TerraformBiomeBuilder.create()
@@ -52,7 +49,7 @@ public class MesaBiomes {
         RegistryKey<Biome> rockyBadlandsPlateauKey = BiomeRegistry.register("rocky_badlands_plateau", rocky_badlands_plateau);
 
         OverworldBiomes.addBiomeVariant(BiomeKeys.BADLANDS_PLATEAU, rockyBadlandsPlateauKey, 0.1);
-        OverworldBiomesExt.addBorderBiome(rockyBadlandsPlateauKey, BiomeKeys.BADLANDS);
+//        OverworldBiomesExt.addBorderBiome(rockyBadlandsPlateauKey, BiomeKeys.BADLANDS);
 
         Biome weathered_badlands_plateau = template.builder()
                 .surfaceBuilder(VanillaPlusConfiguredSurfaceBuilders.WEATHERED_BADLANDS)
@@ -62,6 +59,6 @@ public class MesaBiomes {
         RegistryKey<Biome> weatheredBadlandsPlateau = BiomeRegistry.register("weathered_badlands_plateau", weathered_badlands_plateau);
 
         OverworldBiomes.addBiomeVariant(BiomeKeys.BADLANDS_PLATEAU, weatheredBadlandsPlateau, 0.1);
-        OverworldBiomesExt.addBorderBiome(weatheredBadlandsPlateau, BiomeKeys.BADLANDS);
+//        OverworldBiomesExt.addBorderBiome(weatheredBadlandsPlateau, BiomeKeys.BADLANDS);
     }
 }

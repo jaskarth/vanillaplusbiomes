@@ -1,32 +1,18 @@
 package supercoder79.vanillaplusbiomes.biomes;
 
-import com.google.common.collect.ImmutableList;
-import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
-import com.terraformersmc.terraform.biomebuilder.TerraformBiomeBuilder;
 import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
-import net.minecraft.block.Blocks;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.decorator.*;
-import net.minecraft.world.gen.feature.size.ThreeLayersFeatureSize;
-import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
-import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
-import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
-import net.minecraft.world.gen.tree.LeaveVineTreeDecorator;
-import net.minecraft.world.gen.tree.TrunkVineTreeDecorator;
-import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
+import supercoder79.vanillaplusbiomes.biomes.api.BiomeTemplate;
+import supercoder79.vanillaplusbiomes.biomes.api.TerraformBiomeBuilder;
 import supercoder79.vanillaplusbiomes.feature.VanillaPlusConfiguredFeatures;
-import supercoder79.vanillaplusbiomes.trunk.AncientTrunkPlacer;
 import supercoder79.vanillaplusbiomes.util.BiomeHelper;
 
-import java.util.OptionalInt;
-
-import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.*;
+import static supercoder79.vanillaplusbiomes.biomes.api.DefaultFeature.*;
 
 public class DarkForestBiomes {
     public static BiomeTemplate template = new BiomeTemplate(TerraformBiomeBuilder.create()

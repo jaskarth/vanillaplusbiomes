@@ -1,7 +1,5 @@
 package supercoder79.vanillaplusbiomes.biomes;
 
-import com.terraformersmc.terraform.biomebuilder.BiomeTemplate;
-import com.terraformersmc.terraform.biomebuilder.TerraformBiomeBuilder;
 import net.fabricmc.fabric.api.biome.v1.OverworldBiomes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.registry.RegistryKey;
@@ -10,13 +8,15 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
+import supercoder79.vanillaplusbiomes.biomes.api.BiomeTemplate;
+import supercoder79.vanillaplusbiomes.biomes.api.TerraformBiomeBuilder;
 import supercoder79.vanillaplusbiomes.feature.VanillaPlusConfiguredFeatures;
 import supercoder79.vanillaplusbiomes.surface.VanillaPlusConfiguredSurfaceBuilders;
 import supercoder79.vanillaplusbiomes.util.BiomeHelper;
 
-import static com.terraformersmc.terraform.biomebuilder.DefaultFeature.*;
+import static supercoder79.vanillaplusbiomes.biomes.api.DefaultFeature.*;
 
 public class DesertBiomes {
     public static BiomeTemplate template = new BiomeTemplate(TerraformBiomeBuilder.create()
