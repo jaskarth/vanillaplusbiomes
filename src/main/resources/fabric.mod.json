@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "vanillaplusbiomes",
-  "version": "0.3.0",
+  "version": "${version}",
 
   "name": "Vanilla Plus Biomes",
   "description": "Adds new varieties of existing vanilla biomes",
@@ -9,7 +9,7 @@
     "SuperCoder79"
   ],
   "contact": {
-    "homepage": "The best way to contact me is to DM me on discord: SuperCoder79#3673",
+    "homepage": "https://discord.gg/EwQmvQtshV",
     "sources": ""
   },
 

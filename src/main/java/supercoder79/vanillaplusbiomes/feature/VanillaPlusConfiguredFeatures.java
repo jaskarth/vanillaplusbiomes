@@ -113,6 +113,7 @@ public class VanillaPlusConfiguredFeatures {
                             ConfiguredFeatures.HUGE_RED_MUSHROOM.withChance(0.05F),
                             ConfiguredFeatures.FANCY_OAK.withChance(0.15F)),
                     ConfiguredFeatures.OAK))
+            .decorate(Decorator.HEIGHTMAP.configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING)))
             .decorate(Decorator.DARK_OAK_TREE.configure(NopeDecoratorConfig.INSTANCE));
 
     public static final ConfiguredFeature<?, ?> ANCIENT_DARK_FOREST_VEGETATION = Feature.RANDOM_SELECTOR.configure(
@@ -131,6 +132,7 @@ public class VanillaPlusConfiguredFeatures {
                                             .ignoreVines().build()).withChance(0.8666667F),
                             ConfiguredFeatures.FANCY_OAK.withChance(0.1F)),
                     ConfiguredFeatures.OAK))
+            .decorate(Decorator.HEIGHTMAP.configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING)))
             .decorate(Decorator.DARK_OAK_TREE.configure(NopeDecoratorConfig.INSTANCE));
 
     public static final ConfiguredFeature<?, ?> TALL_DARK_FOREST_VEGETATION = Feature.RANDOM_SELECTOR.configure(
@@ -150,10 +152,12 @@ public class VanillaPlusConfiguredFeatures {
                             ConfiguredFeatures.BIRCH.withChance(0.2F),
                             ConfiguredFeatures.FANCY_OAK.withChance(0.1F)),
                     ConfiguredFeatures.OAK))
+            .decorate(Decorator.HEIGHTMAP.configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING)))
             .decorate(Decorator.DARK_OAK_TREE.configure(NopeDecoratorConfig.INSTANCE));
 
     public static final ConfiguredFeature<?, ?> DARK_OAK_2 = ConfiguredFeatures.DARK_OAK
-            .decorate(Decorator.HEIGHTMAP.configure(new HeightmapDecoratorConfig(Heightmap.Type.MOTION_BLOCKING)))
+            .decorate(Decorator.HEIGHTMAP.configure(new HeightmapDecoratorConfig(Heightmap.Type.OCEAN_FLOOR)))
+            .decorate(Decorator.WATER_DEPTH_THRESHOLD.configure(new WaterDepthThresholdDecoratorConfig(0)))
             .spreadHorizontally()
             .repeat(2);
 
